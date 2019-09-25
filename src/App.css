@@ -1,22 +1,122 @@
-.App {
-  text-align: center;
+/*  ქართულენოვანი ვერსიისთვის ფონტის შერჩევა  */
+* {
+  font-family: "BPG Nino Elite Exp", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+/*საერთო სტილები responsive-სთვის*/
+.inline-responsive {
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.width-100-28-29 {
 }
 
-.App-link {
-  color: #09d3ac;
+.width-100-38-39 {
+}
+
+.width-100-48-49 {
+}
+
+.width-100-58-59 {
+}
+
+.width-100-68-69 {
+}
+
+/*  საერთო, ზოგადი სტილები  */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.inline-responsive {
+}
+
+/*  მობილურებისთვის:  */
+
+
+/*საერთო სტილები responsive-სთვის*/
+.inline-responsive {
+  display: block;
+}
+
+.width-100-28-29 {
+  width: 100%;
+}
+
+.width-100-38-39 {
+  width: 100%;
+}
+
+.width-100-48-49 {
+  width: 100%;
+}
+
+.width-100-58-59 {
+  width: 100%;
+}
+
+.width-100-68-69 {
+  width: 100%;
+}
+
+/*  ტაბლეტებისთვის:  */
+@media only screen and (min-width: 646px) {
+
+  /*საერთო სტილები responsive-სთვის*/
+  .inline-responsive {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .width-100-28-29 {
+    width: 28%;
+  }
+
+  .width-100-38-39 {
+    width: 38%;
+  }
+
+  .width-100-48-49 {
+    width: 48%;
+  }
+
+  .width-100-58-59 {
+    width: 58%;
+  }
+
+  .width-100-68-69 {
+    width: 68%;
+  }
+}
+
+/*  დესკტოპისთვის:  */
+@media only screen and (min-width: 900px) {
+
+  /*საერთო სტილები responsive-სთვის*/
+  .inline-responsive {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .width-100-28-29 {
+    width: 29%;
+  }
+
+  .width-100-38-39 {
+    width: 39%;
+  }
+
+  .width-100-48-49 {
+    width: 49%;
+  }
+
+  .width-100-58-59 {
+    width: 59%;
+  }
+
+  .width-100-68-69 {
+    width: 69%;
+  }
 }
