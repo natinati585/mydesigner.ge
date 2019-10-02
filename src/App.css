@@ -28,7 +28,54 @@ body {
   padding: 0;
 }
 
+/*login form*/
+.admin-login-page-container{
+  padding-top: 20vh;
+  height: 100vh;
+}
+.admin-login-heading{
+  text-align: center;
+  padding: 3% 0;
+  font-size: 20px;
+  color: #1890ff;
+  font-weight: 700;
+}
+.admin-login-form{
+}
 
+/*antd login form styles*/
+.login-form {
+  max-width: 300px;
+  margin: 0 auto !important;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+.ant-input{
+  height: 40px !important;
+}
+.login-form-button{
+  /*background-color: mediumseagreen !important;*/
+  /*border-color: #479a6c !important;*/
+}
+
+/*antd spin styles*/
+.login-spin {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  margin: 20px 0;
+  display: none;
+}
+/*antd alert styles*/
+.login-error{
+  display: none;
+}
 
 .inline-responsive {
 }
