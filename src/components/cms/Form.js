@@ -40,6 +40,7 @@ class NormalLoginForm extends React.Component {
         if (res['data'].Code === '0') {
             console.log(res);
             this.props.stateGiver('authorised', true);
+            return;
             //    redirect
         } else if (res['data'].Code === '111') {
             newState.errors.user = true;
