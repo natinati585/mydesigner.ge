@@ -11,35 +11,53 @@ function hasErrors(fieldsError) {
 class NormalLoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.getPHP = this.getPHP.bind(this);
+
+        this.state= {
+            loading: false,
+            errors: {
+                user: false,
+                password: false,
+                server: false
+            }
+        }
     }
 
-    async getPHP(data) {
+    getPHP = async (data) => {
         let res = await axios.post('http://gamowere.ge/php/login.php', qs.stringify({
             'email': data['username'],
             'password': data['password']
         }));
-        document.getElementsByClassName('login-spin')[0].style.display = 'none';
-        if(res['data'].Code === '0'){
-            document.getElementsByClassName('login-error')[0].style.display = 'none';
-            document.getElementsByClassName('login-error')[1].style.display = 'none';
+
+        let newState = {
+            loading: false,
+            errors: {
+                user: false,
+                password: false,
+                server: false
+            }
+        };
+
+        if (res['data'].Code === '0') {
             console.log(res);
-        //    redirect
-        }
-        else if(res['data'].Code === '111'){
-            document.getElementsByClassName('login-error')[0].style.display = 'block';
-        }
-        else if(res['data'].Code === '112'){
-            document.getElementsByClassName('login-error')[0].style.display = 'none';
-            document.getElementsByClassName('login-error')[1].style.display = 'block';
-        }else{
+            this.props.stateGiver('authorised', true);
+            //    redirect
+        } else if (res['data'].Code === '111') {
+            newState.errors.user = true;
+        } else if (res['data'].Code === '112') {
+            newState.errors.password = true;
+        } else {
             console.log(res);
+            newState.errors.server = true;
         }
-    }
+
+        this.setState(newState);
+    };
 
     handleSubmit = e => {
         e.preventDefault();
-        document.getElementsByClassName('login-spin')[0].style.display = 'block';
+        this.setState({
+            loading: true
+        });
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 this.getPHP(values);
@@ -49,6 +67,7 @@ class NormalLoginForm extends React.Component {
 
     render() {
         const {getFieldDecorator} = this.props.form;
+
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <Form.Item>
@@ -85,11 +104,20 @@ class NormalLoginForm extends React.Component {
                     </Button>
                     {/*Or <a href="">register now!</a>*/}
                 </Form.Item>
-                <div className="login-spin">
+                <div className="login-spin" style={{
+                    display: this.state.loading ? "block" : "none"
+                }}>
                     <Spin/>
                 </div>
-                <Alert className={"login-error"} message="Invalid username" type="error" />
-                <Alert className={"login-error"} message="Invalid password" type="error" />
+                <Alert message="Invalid username" type="error" style={{
+                    display: this.state.errors.user ? "block" : "none"
+                }}/>
+                <Alert message="Invalid password" type="error" style={{
+                    display: this.state.errors.password ? "block" : "none"
+                }}/>
+                <Alert message="Server error, retry" type="error" style={{
+                    display: this.state.errors.server ? "block" : "none"
+                }}/>
             </Form>
         );
     }

@@ -14,7 +14,7 @@ class AdminLogin extends React.Component {
                     Hello Sophie ^^
                 </div>
                 <div className={'admin-login-form'}>
-                    <LoginForm/>
+                    <LoginForm  stateGiver = {this.props.stateGiver}/>
                 </div>
             </div>
         )
