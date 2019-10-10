@@ -1,18 +1,14 @@
-import {Form, Icon, Input, Button, Checkbox, Spin, Alert} from 'antd';
-import React, {Component} from 'react';
+import {Form, Icon, Input, Button, Spin, Alert} from 'antd';
+import React from 'react';
 import qs from "qs";
 
 const axios = require('axios').default;
-
-function hasErrors(fieldsError) {
-    return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 
 class NormalLoginForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state= {
+        this.state = {
             loading: false,
             errors: {
                 user: false,
@@ -22,8 +18,8 @@ class NormalLoginForm extends React.Component {
         }
     }
 
-    getPHP = async (data) => {
-        let res = await axios.post('http://gamowere.ge/php/login.php', qs.stringify({
+    getLoginInfo = async (data) => {
+        let res = await axios.post('https://gamowere.ge/php/login.php', qs.stringify({
             'email': data['username'],
             'password': data['password']
         }));
@@ -38,10 +34,9 @@ class NormalLoginForm extends React.Component {
         };
 
         if (res['data'].Code === '0') {
-            console.log(res);
+            // console.log(res);
             this.props.stateGiver('authorised', true);
             return;
-            //    redirect
         } else if (res['data'].Code === '111') {
             newState.errors.user = true;
         } else if (res['data'].Code === '112') {
@@ -50,7 +45,6 @@ class NormalLoginForm extends React.Component {
             console.log(res);
             newState.errors.server = true;
         }
-
         this.setState(newState);
     };
 
@@ -61,7 +55,7 @@ class NormalLoginForm extends React.Component {
         });
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                this.getPHP(values);
+                this.getLoginInfo(values);
             }
         });
     };

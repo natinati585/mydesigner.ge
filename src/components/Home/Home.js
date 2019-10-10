@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import qs from 'qs'
-// import 'whatwg-fetch';
 const axios = require('axios').default;
 
 class Home extends Component {
@@ -21,11 +20,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <p>just react</p>
-                <button
-                    onClick={this.getPHP}>
-                    Load
-                </button>
+                <p>Home page</p>
             </div>
         )
     }

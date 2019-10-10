@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-import LoginForm from './Form'
+import React from 'react';
+import LoginForm from './AdminLoginForm'
 import 'antd/dist/antd.css';
 
 class AdminLogin extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     render() {
         return (
             <div className={'admin-login-page-container'}>

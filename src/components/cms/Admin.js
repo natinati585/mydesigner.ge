@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AdminLogin from "./AdminLogin";
 import qs from "qs";
+import AdminPage from "./adminPage/AdminPage";
+import {Spin} from "antd";
 
 const axios = require('axios').default;
 
@@ -9,16 +11,33 @@ class Admin extends React.Component {
         super(props);
 
         this.state = {
-            authorised: false
+            // authorised: undefined
+            authorised: true
         }
     }
 
-    checkSession = async () => {
-        let res = await axios.post('http://gamowere.ge/php/checkSession.php', qs.stringify({
-            'checkSession': 'checkSession'
-        }));
+    // componentDidMount() {
+    //     this.checkSession();
+    // }
 
-        console.log(res)
+    checkSession = async () => {
+        try {
+            let res = await axios.post('https://gamowere.ge/php/checkSession.php', qs.stringify({
+                'checkSession': 'checkSession'
+            }));
+
+            if (res.data.Code === '0') {
+                this.setState({
+                    authorised: true
+                });
+            } else {
+                this.setState({
+                    authorised: false
+                });
+            }
+        } catch (e) {
+            console.log('checking error: ', JSON.stringify(e));
+        }
     };
 
     stateGiver = (stateKey, stateValue) => {
@@ -28,15 +47,12 @@ class Admin extends React.Component {
     };
 
     render() {
-        let user = false;
-
+        if(this.state.authorised === undefined){
+            return <Spin/>
+        }
         let adminComponent = (
             <div>
-                <p>just react</p>
-                <button
-                    onClick={this.checkSession}>
-                    Load
-                </button>
+                <AdminPage/>
             </div>
         );
         let adminLogin = (
