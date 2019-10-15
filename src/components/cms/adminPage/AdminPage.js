@@ -24,6 +24,8 @@ class AdminPage extends Component {
             EditProjectModalText: 'Content of the project modal',
             EditProjectModalVisible: false,
             EditProjectModalConfirmLoading: false,
+
+            uploadedImage: null
         }
     }
 
@@ -108,12 +110,23 @@ class AdminPage extends Component {
         });
     };
 
-    async cmsAction(whatToDo, cmsData = 'data') {
-        let stringifiedData = qs.stringify({
-            'cmsAction': whatToDo,
-            'cmsData': cmsData
-        });
-        return await axios.post('https://gamowere.ge/php/cmsData.php', stringifiedData);
+    async cmsAction(whatToDo, cmsData = 'data', image = null) {
+        let formData = new FormData();
+
+        formData.append('cmsAction', whatToDo);
+        formData.append('cmsData', cmsData);
+
+        if( image !== null){
+            formData.append('image', image, image.name);
+        }
+
+        return await axios.post('https://gamowere.ge/php/cmsData.php', formData);
+
+        // let stringifiedData = qs.stringify({
+        //     'cmsAction': whatToDo,
+        //     'cmsData': cmsData
+        // });
+        // return await axios.post('https://gamowere.ge/php/cmsData.php', stringifiedData);
     }
 
     selectData = async () => {
@@ -146,18 +159,20 @@ class AdminPage extends Component {
                 ProjectOrImage: 'image',
                 Project_id_in_images: ProjectId,
                 Image_description: description,
-                Image_url: url,
+                Image_url: "to be set with file",
             };
         } else {
             dataToInsert = {
                 ProjectOrImage: 'project',
                 Project_name: projectName,
                 Project_description: description,
-                Project_image_url: url,
+                Project_image_url: "to be set with file",
             }
         }
 
-        let insertedData = await this.cmsAction('insert', dataToInsert);
+        let insertedData = await this.cmsAction('insert',  JSON.stringify(dataToInsert), this.state.uploadedImage);
+
+        console.log(insertedData);
     };
     updateData = async (idToUpdate, projectName, description, url, projectId = '0') => {
         let dataToUpdate;
@@ -200,6 +215,26 @@ class AdminPage extends Component {
         console.log(event);
     };
 
+    saveUploadedImage = (event) => {
+        this.setState({
+            uploadedImage: event.target.files[0]
+        });
+        console.log(event.target.files[0]);
+    };
+
+    imageUploadHandler = async () => {
+        let imageData = qs.stringify({
+            'image': this.state.uploadedImage,
+        });
+
+        let fd = new FormData();
+        fd.append('image', this.state.uploadedImage, this.state.uploadedImage.name);
+        fd.append({'post': 'kjshdflkjsdf'});
+
+        let resu = await axios.post('https://gamowere.ge/php/testImageUpload.php', fd);
+        console.log(resu);
+    };
+
     render() {
         const {projectsList} = this.state;
         const {AddProjectModalText, AddProjectModalVisible, AddProjectModalConfirmLoading} = this.state;
@@ -240,6 +275,9 @@ class AdminPage extends Component {
                     </Modal>
                 </div>
 
+                <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={this.saveUploadedImage}/>
+                <button onClick={this.imageUploadHandler}>upload image</button>
+
                 <div className={'admin-table-container'}>
                     {
                         projectsList.length ? (
@@ -259,7 +297,8 @@ class AdminPage extends Component {
                                                     <p>{EditProjectModalText}</p>
                                                     <div>
                                                         <input type="file" name="projectImage" accept="image/*"
-                                                               defaultValue={project[3]} onChange={this.projectImageChangeHandler}/>
+                                                               defaultValue={project[3]}
+                                                               onChange={this.projectImageChangeHandler}/>
                                                     </div>
                                                 </Modal>
                                                 <Icon
@@ -338,7 +377,7 @@ class AdminPage extends Component {
                 <button
                     onClick={(e) => {
                         let name = 'image';
-                        let description = 'description';
+                        let description = 'descrippption';
                         let url = 'https://gamowere.ge/images/11.jpeg';
                         let projectId = '13';
                         this.insertData(name, description, url, projectId);
