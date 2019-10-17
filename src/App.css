@@ -118,12 +118,13 @@ body {
     background-color: #bae7ff;
 }
 
-.add-new-project-icon {
+.add-new-project-icon, .add-new-image-icon {
     display: inline-block !important;
     margin: 0 20px;
 }
 
-.add-new-project-text {
+.add-new-project-text, .add-new-image-text {
+    /*display: block !important;*/
     display: inline-block !important;
     margin: 0;
 }
@@ -172,6 +173,10 @@ body {
 
 .project-image {
     background-size: contain;
+}
+
+.project-image > img {
+    max-width: 50vw;
 }
 
 .project-description {

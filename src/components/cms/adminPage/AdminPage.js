@@ -3,6 +3,9 @@ import qs from "qs";
 import {Icon, Collapse, Modal} from "antd";
 import axios from 'axios';
 
+import NewProjectModal from './NewProjectModal'
+import NewImageModal from './NewImageModal'
+
 const {Panel} = Collapse;
 
 class AdminPage extends Component {
@@ -11,7 +14,6 @@ class AdminPage extends Component {
 
         this.state = {
             projectsList: {},
-            projectsIdsNames: {},
 
             AddProjectModalText: 'Content of the project modal',
             AddProjectModalVisible: false,
@@ -103,7 +105,6 @@ class AdminPage extends Component {
 
     loadData = async () => {
         let selectedData = await this.selectData();
-        let projectsIdsNames = [];
 
         this.setState({
             projectsList: selectedData
@@ -148,10 +149,11 @@ class AdminPage extends Component {
             }
         }
 
+        console.log(selectedData);
         // return selectedData.data;
         return dataToSend;
     };
-    insertData = async (projectName, description, url, ProjectId = '0') => {
+    insertData = async (projectName, description, url, ProjectId = '0', uploadedImage = null) => {
         let dataToInsert;
 
         if (ProjectId !== '0') {
@@ -171,8 +173,7 @@ class AdminPage extends Component {
         }
 
         let insertedData = await this.cmsAction('insert',  JSON.stringify(dataToInsert), this.state.uploadedImage);
-
-        console.log(insertedData);
+        this.loadData();
     };
     updateData = async (idToUpdate, projectName, description, url, projectId = '0') => {
         let dataToUpdate;
@@ -195,7 +196,8 @@ class AdminPage extends Component {
             }
         }
 
-        let updatedData = await this.cmsAction('update', dataToUpdate);
+        let updatedData = await this.cmsAction('update', JSON.stringify(dataToUpdate));
+        this.loadData();
     };
     deleteData = async (pOrI, idToDelete) => {
         let dataToDelete = {
@@ -203,7 +205,7 @@ class AdminPage extends Component {
             'idToDelete': idToDelete
         };
 
-        let deletedData = await this.cmsAction('delete', dataToDelete);
+        let deletedData = await this.cmsAction('delete', JSON.stringify(dataToDelete));
     };
 
     logout = async () => {
@@ -235,48 +237,68 @@ class AdminPage extends Component {
         console.log(resu);
     };
 
+    toGetDataFromProjectModalComponent = (data) => {
+        console.log(data);
+
+        // insertData
+    };
+
+    toGetDataFromImageModalComponent = (data) => {
+        console.log(data);
+
+
+    };
+
     render() {
         const {projectsList} = this.state;
         const {AddProjectModalText, AddProjectModalVisible, AddProjectModalConfirmLoading} = this.state;
         const {AddImageModalText, AddImageModalVisible, AddImageModalConfirmLoading} = this.state;
         const {EditProjectModalText, EditProjectModalVisible, EditProjectModalConfirmLoading} = this.state;
-
+        console.log(this.state.projectsList);
 
         return (
             <div>
                 <div className={'admin-page-space-filler'}></div>
                 <Icon type="poweroff" onClick={this.logout} className={'logout-button'}/>
                 <div className={'add-new-container'}>
-                    <div className={'add-new-project-or-image-container'} onClick={() => this.showAddProjectModal()}>
-                        <Icon type="plus" className={'add-new-project-icon'}/>
-                        <p className={'add-new-project-text'}>Add new project</p>
-                    </div>
-                    <Modal
-                        title="Add Project"
-                        visible={AddProjectModalVisible}
-                        onOk={this.handleAddProjectModalOk}
-                        confirmLoading={AddProjectModalConfirmLoading}
-                        onCancel={this.handleAddProjectModalCancel}
-                    >
-                        <p>{AddProjectModalText}</p>
-                    </Modal>
-                    <div className={'add-new-project-or-image-container'} onClick={() => this.showAddImageModal()}>
-                        <Icon type="plus" className={'add-new-project-icon'}/>
-                        <p className={'add-new-project-text'}>Add new image</p>
-                    </div>
-                    <Modal
-                        title="Add Image"
-                        visible={AddImageModalVisible}
-                        onOk={this.handleAddImageModalOk}
-                        confirmLoading={AddImageModalConfirmLoading}
-                        onCancel={this.handleAddImageModalCancel}
-                    >
-                        <p>{AddImageModalText}</p>
-                    </Modal>
+                    <NewProjectModal />
+                    {/*<div className={'add-new-project-or-image-container'} onClick={() => this.showAddProjectModal()}>*/}
+                    {/*    <Icon type="plus" className={'add-new-project-icon'}/>*/}
+                    {/*    <p className={'add-new-project-text'}>Add new project</p>*/}
+                    {/*</div>*/}
+                    {/*<Modal*/}
+                    {/*    title="Add Project"*/}
+                    {/*    visible={AddProjectModalVisible}*/}
+                    {/*    // onOk={this.handleAddProjectModalOk}*/}
+                    {/*    onOk={(e) => {*/}
+                    {/*    }}*/}
+                    {/*    confirmLoading={AddProjectModalConfirmLoading}*/}
+                    {/*    onCancel={this.handleAddProjectModalCancel}*/}
+                    {/*>*/}
+                    {/*    <p>{AddProjectModalText}</p>*/}
+
+                    {/*</Modal>*/}
+
+                    <NewImageModal/>
+                    {/*<div className={'add-new-project-or-image-container'} onClick={() => this.showAddImageModal()}>*/}
+                    {/*    <Icon type="plus" className={'add-new-project-icon'}/>*/}
+                    {/*    <p className={'add-new-project-text'}>Add new image</p>*/}
+                    {/*</div>*/}
+                    {/*<Modal*/}
+                    {/*    title="Add Image"*/}
+                    {/*    visible={AddImageModalVisible}*/}
+                    {/*    onOk={this.handleAddImageModalOk}*/}
+                    {/*    confirmLoading={AddImageModalConfirmLoading}*/}
+                    {/*    onCancel={this.handleAddImageModalCancel}*/}
+                    {/*>*/}
+                    {/*    <p>{AddImageModalText}</p>*/}
+                    {/*</Modal>*/}
                 </div>
 
                 <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={this.saveUploadedImage}/>
                 <button onClick={this.imageUploadHandler}>upload image</button>
+
+                <NewProjectModal />
 
                 <div className={'admin-table-container'}>
                     {
@@ -379,18 +401,18 @@ class AdminPage extends Component {
                         let name = 'image';
                         let description = 'descrippption';
                         let url = 'https://gamowere.ge/images/11.jpeg';
-                        let projectId = '13';
+                        let projectId = '16';
                         this.insertData(name, description, url, projectId);
                     }}>
                     Insert
                 </button>
                 <button
                     onClick={(e) => {
-                        let name = 'nameeeeeeed';
+                        let name = 'project 1';
                         let description = 'description';
-                        let url = 'url';
+                        let url = 'uiuyiuyrl';
                         let projectId = '0';
-                        let idToUpdate = '2';
+                        let idToUpdate = '13';
                         this.updateData(idToUpdate, name, description, url, projectId);
                     }}>
                     Update
