@@ -11,14 +11,14 @@ class Admin extends React.Component {
         super(props);
 
         this.state = {
-            // authorised: undefined
-            authorised: true
+            authorised: undefined
+            // authorised: true
         }
     }
 
-    // componentDidMount() {
-    //     this.checkSession();
-    // }
+    componentDidMount() {
+        this.checkSession();
+    }
 
     checkSession = async () => {
         try {

@@ -103,6 +103,7 @@ const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
                         </Form.Item>
                         <Form.Item>
                             <Select
+                                required={true}
                                 showSearch
                                 style={{width: 200}}
                                 placeholder="Select a project"
@@ -171,10 +172,11 @@ class NewImageModal extends React.Component {
             let description = 'description';
             let url = 'https://gamowere.ge/images/callNati.jpeg';
             let projectId = this.state.fetchedProject;
-            // let projectId = '28';
+            console.log(projectId, this.state.fetchedImage);
 
-            this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage);
-            // console.log(name, description, url, projectId, this.state.fetchedImage);
+            if(projectId && this.state.fetchedImage){
+                this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage);
+            }
         });
     };
 

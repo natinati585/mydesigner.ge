@@ -1,4 +1,4 @@
-import {Button, Modal, Form, Input, Radio, Icon, Upload, message} from 'antd';
+import {Modal, Form, Input, Icon, Upload, message} from 'antd';
 import React from "react";
 
 function getBase64(img, callback) {
@@ -150,18 +150,6 @@ class NewProjectModal extends React.Component {
                     <p className={'add-new-project-text'}>Add new project</p>
                 </div>
 
-                {/*<Button*/}
-                {/*    type="primary"*/}
-                {/*    onClick={this.showModal}*/}
-                {/*    className={'add-new-project-or-image-container'}>*/}
-                {/*    New Collection*/}
-                {/*</Button>*/}
-                {/*<div*/}
-                {/*    // className={'add-new-project-or-image-container'}*/}
-                {/*    onClick={this.showModal}>*/}
-                {/*    <Icon type="plus" className={'add-new-project-icon'}/>*/}
-                {/*    <p className={'add-new-project-text'}>Add new project</p>*/}
-                {/*</div>*/}
                 <ProjectsCreateForm
                     imageFetcher = {this.imageFetcher}
                     wrappedComponentRef={this.saveFormRef}

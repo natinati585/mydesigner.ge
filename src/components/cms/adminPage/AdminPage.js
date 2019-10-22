@@ -15,14 +15,6 @@ class AdminPage extends Component {
         this.state = {
             projectsList: [],
 
-            // AddProjectModalText: 'Content of the project modal',
-            // AddProjectModalVisible: false,
-            // AddProjectModalConfirmLoading: false,
-
-            // AddImageModalText: 'Content of the image modal',
-            // AddImageModalVisible: false,
-            // AddImageModalConfirmLoading: false,
-
             EditProjectModalVisible: false,
             EditProjectModalConfirmLoading: false,
             editProjectName: null,
@@ -272,8 +264,6 @@ class AdminPage extends Component {
                                                     onClick={async event => {
                                                         event.stopPropagation();
                                                         await this.showEditProjectModal(project);
-                                                        //მოდალის გახსნა, ინფოს ჩაწერა და ვალუების დაბრუნება
-                                                        // await this.updateData(project[0], project[1], [project[2], project[3]])
                                                     }}
                                                 />
                                                 <Icon
@@ -290,7 +280,7 @@ class AdminPage extends Component {
                                             <div className={'image-panel-expanded'}>
                                                 <div className={'project-image-description-container'}>
                                                     <div className={'project-image'}>{
-                                                        <img src={project[3]}/>
+                                                        <img alt="iimage" src={project[3]}/>
                                                     }</div>
                                                     <div className={'project-description'}>
                                                         {
