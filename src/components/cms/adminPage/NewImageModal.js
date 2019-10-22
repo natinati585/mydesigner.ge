@@ -1,39 +1,129 @@
-import {Button, Modal, Form, Input, Radio, Icon} from 'antd';
+import {Modal, Form, Icon, Upload, message, Select} from 'antd';
 import React from "react";
 
-const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
-    // eslint-disable-next-line
+const {Option} = Select;
+
+function getBase64(img, callback) {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+}
+
+function beforeUpload(file) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/jpg';
+    if (!isJpgOrPng) {
+        message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+        message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+}
+
+const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
     class extends React.Component {
+
+        state = {
+            loading: false,
+            uploadedImage: null,
+        };
+
+        onChange = (value) => {
+            this.props.projectFetcher(value);
+        };
+        onBlur = () => {
+        };
+        onFocus = () => {
+        };
+        onSearch = (val) => {
+        };
+
+        handleChange = info => {
+            if (info.file.status === 'uploading') {
+                this.setState({loading: true});
+                return;
+            }
+            if (info.file.status === 'done') {
+                // Get this url from response in real world.
+                getBase64(info.file.originFileObj, imageUrl =>
+                    this.setState({
+                        imageUrl,
+                    }),
+                );
+                this.setState({
+                    uploadedImage: info.file.originFileObj,
+                    loading: false,
+                });
+                this.props.imageFetcher(this.state.uploadedImage);
+            }
+        };
+
         render() {
+            const projects = this.props.projects;
+            const projectsOrganised = [];
+
+            if (projects) {
+                for (let i = 1; i < projects.length; i += 2) {
+                    projectsOrganised.push([projects[i], projects[i - 1]]);
+                }
+            }
+
+            const uploadButton = (
+                <div>
+                    <Icon type={this.state.loading ? 'loading' : 'plus'}/>
+                    <div className="ant-upload-text">Upload</div>
+                </div>
+            );
+            const {imageUrl} = this.state;
             const {visible, onCancel, onCreate, form} = this.props;
             const {getFieldDecorator} = form;
+
             return (
                 <Modal
                     visible={visible}
-                    title="Add Image"
+                    title="Add Project"
                     okText="Create"
                     onCancel={onCancel}
                     onOk={onCreate}
-                    // confirmLoading={AddImageModalConfirmLoading}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Title">
-                            {getFieldDecorator('title', {
-                                rules: [{required: true, message: 'Please input the title of collection!'}],
-                            })(<Input/>)}
+                        <Form.Item label="Upload the main photo of project">
+                            <Upload
+                                name="avatar"
+                                listType="picture-card"
+                                className="avatar-uploader"
+                                showUploadList={false}
+                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                beforeUpload={beforeUpload}
+                                onChange={this.handleChange}
+                            >
+                                {imageUrl ? <img src={imageUrl} alt="avatar" style={{width: '100%'}}/> : uploadButton}
+                            </Upload>
                         </Form.Item>
-                        <Form.Item label="Description">
-                            {getFieldDecorator('description')(<Input type="textarea"/>)}
-                        </Form.Item>
-                        <Form.Item className="collection-create-form_last-form-item">
-                            {getFieldDecorator('modifier', {
-                                initialValue: 'public',
-                            })(
-                                <Radio.Group>
-                                    <Radio value="public">Public</Radio>
-                                    <Radio value="private">Private</Radio>
-                                </Radio.Group>,
-                            )}
+                        <Form.Item>
+                            <Select
+                                showSearch
+                                style={{width: 200}}
+                                placeholder="Select a project"
+                                optionFilterProp="children"
+                                onChange={this.onChange}
+                                onFocus={this.onFocus}
+                                onBlur={this.onBlur}
+                                onSearch={this.onSearch}
+                                filterOption={(input, option) =>
+                                    option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                                }
+                            >
+                                {
+                                    projectsOrganised && projectsOrganised.map((project, index) => {
+                                        return (
+                                            <Option value={project[1]} key={project[1]}>{project[0]}</Option>
+                                        )
+                                    })
+                                }
+
+                            </Select>
                         </Form.Item>
                     </Form>
                 </Modal>
@@ -45,14 +135,26 @@ const CollectionCreateForm = Form.create({name: 'form_in_modal'})(
 class NewImageModal extends React.Component {
     state = {
         visible: false,
+        fetchedImage: null,
+        fetchedProject: null
     };
 
     showModal = () => {
         this.setState({visible: true});
     };
-
     handleCancel = () => {
         this.setState({visible: false});
+    };
+
+    imageFetcher = (fetchedImage) => {
+        this.setState({
+            fetchedImage: fetchedImage
+        })
+    };
+    projectFetcher = (fetchedProject) => {
+        this.setState({
+            fetchedProject: fetchedProject
+        })
     };
 
     handleCreate = () => {
@@ -62,9 +164,17 @@ class NewImageModal extends React.Component {
                 return;
             }
 
-            console.log('Received values of form: ', values);
             form.resetFields();
             this.setState({visible: false});
+
+            let name = 'image';
+            let description = 'description';
+            let url = 'https://gamowere.ge/images/callNati.jpeg';
+            let projectId = this.state.fetchedProject;
+            // let projectId = '28';
+
+            this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage);
+            // console.log(name, description, url, projectId, this.state.fetchedImage);
         });
     };
 
@@ -75,30 +185,24 @@ class NewImageModal extends React.Component {
     render() {
         return (
             <div className={'add-new-project-or-image-container'}>
-
                 <div onClick={this.showModal}>
-                    <Icon type="plus" className={'add-new-image-icon'}/>
-                    <p className={'add-new-image-text'}>Add new image</p>
+                    <Icon type="plus" className={'add-new-project-icon'}/>
+                    <p className={'add-new-project-text'}>Add new Image</p>
                 </div>
 
-                {/*<Button*/}
-                {/*    type="primary"*/}
-                {/*    onClick={this.showModal}*/}
-                {/*    className={'add-new-image-or-image-container'}>*/}
-                {/*    New Collection*/}
-                {/*</Button>*/}
-                {/*<div*/}
-                {/*    // className={'add-new-project-or-image-container'}*/}
-                {/*    onClick={this.showModal}>*/}
-                {/*    <Icon type="plus" className={'add-new-image-icon'}/>*/}
-                {/*    <p className={'add-new-image-text'}>Add new image</p>*/}
-                {/*</div>*/}
-                <CollectionCreateForm
-                    wrappedComponentRef={this.saveFormRef}
-                    visible={this.state.visible}
-                    onCancel={this.handleCancel}
-                    onCreate={this.handleCreate}
-                />
+                {
+                    this.state.visible && (<ImagesCreateForm
+                        projects={this.props.projects}
+                        projectFetcher={this.projectFetcher}
+                        imageFetcher={this.imageFetcher}
+                        wrappedComponentRef={this.saveFormRef}
+                        visible={true}
+                        onCancel={this.handleCancel}
+                        onCreate={this.handleCreate}
+                    />)
+
+                }
+
             </div>
         );
     }

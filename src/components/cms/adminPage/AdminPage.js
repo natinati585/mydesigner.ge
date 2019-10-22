@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import qs from "qs";
-import {Icon, Collapse, Modal} from "antd";
+import {Icon, Collapse, Modal, Input} from "antd";
 import axios from 'axios';
 
 import NewProjectModal from './NewProjectModal'
 import NewImageModal from './NewImageModal'
 
+const {TextArea} = Input;
 const {Panel} = Collapse;
 
 class AdminPage extends Component {
@@ -13,21 +13,24 @@ class AdminPage extends Component {
         super(props);
 
         this.state = {
-            projectsList: {},
+            projectsList: [],
 
-            AddProjectModalText: 'Content of the project modal',
-            AddProjectModalVisible: false,
-            AddProjectModalConfirmLoading: false,
+            // AddProjectModalText: 'Content of the project modal',
+            // AddProjectModalVisible: false,
+            // AddProjectModalConfirmLoading: false,
 
-            AddImageModalText: 'Content of the image modal',
-            AddImageModalVisible: false,
-            AddImageModalConfirmLoading: false,
+            // AddImageModalText: 'Content of the image modal',
+            // AddImageModalVisible: false,
+            // AddImageModalConfirmLoading: false,
 
-            EditProjectModalText: 'Content of the project modal',
             EditProjectModalVisible: false,
             EditProjectModalConfirmLoading: false,
+            editProjectName: null,
+            editProjectDescription: null,
+            editProjectImageUpload: null,
 
-            uploadedImage: null
+            uploadedImage: null,
+            projectsOnly: null
         }
     }
 
@@ -35,59 +38,24 @@ class AdminPage extends Component {
         this.loadData();
     }
 
-    showAddProjectModal = () => {
-        this.setState({
-            AddProjectModalVisible: true,
-        });
-    };
-    handleAddProjectModalOk = (data) => {
-        this.setState({
-            AddProjectModalText: 'The modal will be closed after two seconds',
-            AddProjectModalConfirmLoading: true,
-        });
-        setTimeout(() => {
-            this.setState({
-                AddProjectModalVisible: false,
-                AddProjectModalConfirmLoading: false,
-            });
-        }, 2000);
-    };
-    handleAddProjectModalCancel = () => {
-        this.setState({
-            AddProjectModalVisible: false,
-        });
-    };
-    showAddImageModal = () => {
-        this.setState({
-            AddImageModalVisible: true,
-        });
-    };
-    handleAddImageModalOk = (data) => {
-        this.setState({
-            AddImageModalText: 'The modal will be closed after two seconds',
-            AddImageModalConfirmLoading: true,
-        });
-        setTimeout(() => {
-            this.setState({
-                AddImageModalVisible: false,
-                AddImageModalConfirmLoading: false,
-            });
-        }, 2000);
-    };
-    handleAddImageModalCancel = () => {
-        this.setState({
-            AddImageModalVisible: false,
-        });
-    };
-
-    showEditProjectModal = () => {
+    showEditProjectModal = (project) => {
         this.setState({
             EditProjectModalVisible: true,
+            editProjectName: project[1],
+            editProjectDescription: project[2],
         });
     };
     handleEditProjectModalOk = (data) => {
+        let name = data.name;
+        let description = data.description;
+        let url = 'project url to be updated';
+        let projectId = '0';
+        let idToUpdate = data.id;
+        let updateFile = data.image;
+
+        this.updateData(idToUpdate, name, description, url, projectId, updateFile);
+
         this.setState({
-            EditProjectModalText: 'The modal will be closed after two seconds',
             EditProjectModalConfirmLoading: true,
         });
         setTimeout(() => {
@@ -117,17 +85,12 @@ class AdminPage extends Component {
         formData.append('cmsAction', whatToDo);
         formData.append('cmsData', cmsData);
 
-        if( image !== null){
+        if (image !== null) {
             formData.append('image', image, image.name);
         }
 
         return await axios.post('https://gamowere.ge/php/cmsData.php', formData);
 
-        // let stringifiedData = qs.stringify({
-        //     'cmsAction': whatToDo,
-        //     'cmsData': cmsData
-        // });
-        // return await axios.post('https://gamowere.ge/php/cmsData.php', stringifiedData);
     }
 
     selectData = async () => {
@@ -135,8 +98,9 @@ class AdminPage extends Component {
         let objectOfProjects = {};
         let dataToSend = [];
         let dataToSendIndex = -1;
+        let projectsOnly = selectedData.data[0];
 
-        for (let i = 0; i < selectedData.data.length; i++) {
+        for (let i = 1; i < selectedData.data.length; i++) {
             let dataI = selectedData.data[i];
 
             if (dataI.Projects_id in objectOfProjects) {
@@ -148,9 +112,9 @@ class AdminPage extends Component {
                 dataToSendIndex += 1;
             }
         }
-
-        console.log(selectedData);
-        // return selectedData.data;
+        this.setState({
+            projectsOnly: projectsOnly
+        });
         return dataToSend;
     };
     insertData = async (projectName, description, url, ProjectId = '0', uploadedImage = null) => {
@@ -172,10 +136,10 @@ class AdminPage extends Component {
             }
         }
 
-        let insertedData = await this.cmsAction('insert',  JSON.stringify(dataToInsert), this.state.uploadedImage);
+        let insertedData = await this.cmsAction('insert', JSON.stringify(dataToInsert), uploadedImage);
         this.loadData();
     };
-    updateData = async (idToUpdate, projectName, description, url, projectId = '0') => {
+    updateData = async (idToUpdate, projectName, description, url, projectId = '0', uploadedImage = null) => {
         let dataToUpdate;
 
         if (projectId !== '0') {
@@ -196,13 +160,18 @@ class AdminPage extends Component {
             }
         }
 
-        let updatedData = await this.cmsAction('update', JSON.stringify(dataToUpdate));
+        let updatedData = await this.cmsAction('update', JSON.stringify(dataToUpdate), uploadedImage);
         this.loadData();
     };
-    deleteData = async (pOrI, idToDelete) => {
+    deleteData = async (pOrI, idToDelete, imageUrl) => {
+
+        let lI = imageUrl.lastIndexOf('/');
+        let imagePureUrl = imageUrl.substring(lI + 1);
+
         let dataToDelete = {
             'pOrI': pOrI,
-            'idToDelete': idToDelete
+            'idToDelete': idToDelete,
+            'imageUrl': imagePureUrl
         };
 
         let deletedData = await this.cmsAction('delete', JSON.stringify(dataToDelete));
@@ -213,92 +182,27 @@ class AdminPage extends Component {
         window.location.href = '/admin';
     };
 
-    projectImageChangeHandler = event => {
-        console.log(event);
-    };
-
-    saveUploadedImage = (event) => {
+    editProjectImageUploadHandler = (event) => {
         this.setState({
-            uploadedImage: event.target.files[0]
-        });
-        console.log(event.target.files[0]);
-    };
-
-    imageUploadHandler = async () => {
-        let imageData = qs.stringify({
-            'image': this.state.uploadedImage,
-        });
-
-        let fd = new FormData();
-        fd.append('image', this.state.uploadedImage, this.state.uploadedImage.name);
-        fd.append({'post': 'kjshdflkjsdf'});
-
-        let resu = await axios.post('https://gamowere.ge/php/testImageUpload.php', fd);
-        console.log(resu);
-    };
-
-    toGetDataFromProjectModalComponent = (data) => {
-        console.log(data);
-
-        // insertData
-    };
-
-    toGetDataFromImageModalComponent = (data) => {
-        console.log(data);
-
-
+            editProjectImageUpload: event.target.files[0]
+        })
     };
 
     render() {
-        const {projectsList} = this.state;
-        const {AddProjectModalText, AddProjectModalVisible, AddProjectModalConfirmLoading} = this.state;
-        const {AddImageModalText, AddImageModalVisible, AddImageModalConfirmLoading} = this.state;
-        const {EditProjectModalText, EditProjectModalVisible, EditProjectModalConfirmLoading} = this.state;
-        console.log(this.state.projectsList);
+        const {projectsList, projectsOnly} = this.state;
+        const {EditProjectModalVisible, EditProjectModalConfirmLoading} = this.state;
 
         return (
             <div>
                 <div className={'admin-page-space-filler'}></div>
                 <Icon type="poweroff" onClick={this.logout} className={'logout-button'}/>
                 <div className={'add-new-container'}>
-                    <NewProjectModal />
-                    {/*<div className={'add-new-project-or-image-container'} onClick={() => this.showAddProjectModal()}>*/}
-                    {/*    <Icon type="plus" className={'add-new-project-icon'}/>*/}
-                    {/*    <p className={'add-new-project-text'}>Add new project</p>*/}
-                    {/*</div>*/}
-                    {/*<Modal*/}
-                    {/*    title="Add Project"*/}
-                    {/*    visible={AddProjectModalVisible}*/}
-                    {/*    // onOk={this.handleAddProjectModalOk}*/}
-                    {/*    onOk={(e) => {*/}
-                    {/*    }}*/}
-                    {/*    confirmLoading={AddProjectModalConfirmLoading}*/}
-                    {/*    onCancel={this.handleAddProjectModalCancel}*/}
-                    {/*>*/}
-                    {/*    <p>{AddProjectModalText}</p>*/}
-
-                    {/*</Modal>*/}
-
-                    <NewImageModal/>
-                    {/*<div className={'add-new-project-or-image-container'} onClick={() => this.showAddImageModal()}>*/}
-                    {/*    <Icon type="plus" className={'add-new-project-icon'}/>*/}
-                    {/*    <p className={'add-new-project-text'}>Add new image</p>*/}
-                    {/*</div>*/}
-                    {/*<Modal*/}
-                    {/*    title="Add Image"*/}
-                    {/*    visible={AddImageModalVisible}*/}
-                    {/*    onOk={this.handleAddImageModalOk}*/}
-                    {/*    confirmLoading={AddImageModalConfirmLoading}*/}
-                    {/*    onCancel={this.handleAddImageModalCancel}*/}
-                    {/*>*/}
-                    {/*    <p>{AddImageModalText}</p>*/}
-                    {/*</Modal>*/}
+                    <NewProjectModal valuesFetcher={this.insertData}/>
+                    {
+                        this.state.projectsOnly ?
+                            <NewImageModal valuesFetcher={this.insertData} projects={this.state.projectsOnly}/> : null
+                    }
                 </div>
-
-                <input type="file" accept="image/x-png,image/gif,image/jpeg" onChange={this.saveUploadedImage}/>
-                <button onClick={this.imageUploadHandler}>upload image</button>
-
-                <NewProjectModal />
 
                 <div className={'admin-table-container'}>
                     {
@@ -308,19 +212,58 @@ class AdminPage extends Component {
                                     let projectSliced = project.slice(4);
                                     return (
                                         <Panel className={'image-panel'} header={project[1]} key={index} extra={(
-                                            <div>
+                                            <div onClick={(e) => {
+                                                e.stopPropagation()
+                                            }}>
                                                 <Modal
                                                     title="Edit Project"
                                                     visible={EditProjectModalVisible}
-                                                    onOk={this.handleEditProjectModalOk}
+                                                    onOk={() => {
+                                                        var n = project[3].lastIndexOf('/');
+                                                        var urlOfImage = project[3].substring(n + 1);
+
+                                                        let data = {
+                                                            name: project[1],
+                                                            description: project[2],
+                                                            image: null,
+                                                            id: project[0]
+                                                        };
+
+                                                        if (this.state.editProjectName) {
+                                                            data.name = this.state.editProjectName;
+                                                        }
+                                                        if (this.state.editProjectDescription) {
+                                                            data.description = this.state.editProjectDescription;
+                                                        }
+                                                        if (this.state.editProjectImageUpload) {
+                                                            data.image = this.state.editProjectImageUpload;
+                                                        }
+
+                                                        this.handleEditProjectModalOk(data);
+                                                    }}
                                                     confirmLoading={EditProjectModalConfirmLoading}
                                                     onCancel={this.handleEditProjectModalCancel}
                                                 >
-                                                    <p>{EditProjectModalText}</p>
                                                     <div>
-                                                        <input type="file" name="projectImage" accept="image/*"
-                                                               defaultValue={project[3]}
-                                                               onChange={this.projectImageChangeHandler}/>
+                                                        <Input type={"text"} placeholder={"Project name"}
+                                                               value={this.state.editProjectName}
+                                                               className={"update-project-input"}
+                                                               onChange={(e) => {
+                                                                   this.setState({
+                                                                       editProjectName: e.target.value
+                                                                   });
+                                                               }}/>
+                                                        <TextArea rows={4} placeholder={"Project description"}
+                                                                  value={this.state.editProjectDescription}
+                                                                  className={"update-project-input"}
+                                                                  onChange={(e) => {
+                                                                      this.setState({
+                                                                          editProjectDescription: e.target.value
+                                                                      });
+                                                                  }}/>
+                                                        <input type="file" name="projectImage"
+                                                               className={"update-project-input"}
+                                                               onChange={this.editProjectImageUploadHandler}/>
                                                     </div>
                                                 </Modal>
                                                 <Icon
@@ -328,7 +271,7 @@ class AdminPage extends Component {
                                                     type="edit"
                                                     onClick={async event => {
                                                         event.stopPropagation();
-                                                        await this.showEditProjectModal();
+                                                        await this.showEditProjectModal(project);
                                                         //მოდალის გახსნა, ინფოს ჩაწერა და ვალუების დაბრუნება
                                                         // await this.updateData(project[0], project[1], [project[2], project[3]])
                                                     }}
@@ -337,8 +280,8 @@ class AdminPage extends Component {
                                                     className={'admin-table-icon'}
                                                     type="delete"
                                                     onClick={async event => {
-                                                        event.stopPropagation()
-                                                        await this.deleteData('project', project[0]);
+                                                        event.stopPropagation();
+                                                        await this.deleteData('project', project[0], project[3]);
                                                         this.loadData();
                                                     }}
                                                 />
@@ -367,7 +310,7 @@ class AdminPage extends Component {
                                                                     className={'admin-table-icon'}
                                                                     type="delete"
                                                                     onClick={async event => {
-                                                                        await this.deleteData('image', image[0]);
+                                                                        await this.deleteData('image', image[0], image[2]);
                                                                         this.loadData();
                                                                     }}
                                                                 />
@@ -376,7 +319,6 @@ class AdminPage extends Component {
                                                     })
                                                 }</div>
                                             </div>
-
 
                                         </Panel>
                                     )
@@ -389,43 +331,6 @@ class AdminPage extends Component {
                         )
                     }
                 </div>
-
-
-                <p style={{marginTop: '100vh'}}>Admin page</p>
-                <button
-                    onClick={this.selectData}>
-                    Select
-                </button>
-                <button
-                    onClick={(e) => {
-                        let name = 'image';
-                        let description = 'descrippption';
-                        let url = 'https://gamowere.ge/images/11.jpeg';
-                        let projectId = '16';
-                        this.insertData(name, description, url, projectId);
-                    }}>
-                    Insert
-                </button>
-                <button
-                    onClick={(e) => {
-                        let name = 'project 1';
-                        let description = 'description';
-                        let url = 'uiuyiuyrl';
-                        let projectId = '0';
-                        let idToUpdate = '13';
-                        this.updateData(idToUpdate, name, description, url, projectId);
-                    }}>
-                    Update
-                </button>
-                <button
-                    onClick={(e) => {
-                        let pOrI = 'project';
-                        let idToDelete = '9';
-
-                        this.deleteData(pOrI, idToDelete)
-                    }}>
-                    Delete
-                </button>
             </div>
         )
     }
