@@ -172,7 +172,6 @@ class NewImageModal extends React.Component {
             let description = 'description';
             let url = 'https://gamowere.ge/images/callNati.jpeg';
             let projectId = this.state.fetchedProject;
-            console.log(projectId, this.state.fetchedImage);
 
             if(projectId && this.state.fetchedImage){
                 this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage);

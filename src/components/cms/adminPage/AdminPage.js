@@ -19,7 +19,10 @@ class AdminPage extends Component {
             EditProjectModalConfirmLoading: false,
             editProjectName: null,
             editProjectDescription: null,
+            editProjectNameEn: null,
+            editProjectDescriptionEn: null,
             editProjectImageUpload: null,
+            editProjectId: null,
 
             uploadedImage: null,
             projectsOnly: null
@@ -34,18 +37,23 @@ class AdminPage extends Component {
         this.setState({
             EditProjectModalVisible: true,
             editProjectName: project[1],
+            editProjectNameEn: project[3],
             editProjectDescription: project[2],
+            editProjectDescriptionEn: project[4],
+            editProjectId: project[0]
         });
     };
     handleEditProjectModalOk = (data) => {
         let name = data.name;
         let description = data.description;
+        let nameEn = data.nameEn;
+        let descriptionEn = data.descriptionEn;
         let url = 'project url to be updated';
         let projectId = '0';
         let idToUpdate = data.id;
         let updateFile = data.image;
 
-        this.updateData(idToUpdate, name, description, url, projectId, updateFile);
+        this.updateData(idToUpdate, name, description, url, projectId, updateFile, nameEn, descriptionEn);
 
         this.setState({
             EditProjectModalConfirmLoading: true,
@@ -77,6 +85,8 @@ class AdminPage extends Component {
         formData.append('cmsAction', whatToDo);
         formData.append('cmsData', cmsData);
 
+
+
         if (image !== null) {
             formData.append('image', image, image.name);
         }
@@ -100,7 +110,7 @@ class AdminPage extends Component {
                 dataToSend[dataToSendIndex].push([dataI.Images_id, dataI.Image_description, dataI.Image_url]);
             } else {
                 objectOfProjects[dataI.Projects_id] = [dataI.Images_id];
-                dataToSend.push([dataI.Projects_id, dataI.Project_name, dataI.Project_description, dataI.Project_image_url, [dataI.Images_id, dataI.Image_description, dataI.Image_url]]);
+                dataToSend.push([dataI.Projects_id, dataI.Project_name, dataI.Project_description, dataI.Project_name_en, dataI.Project_description_en, dataI.Project_image_url, [dataI.Images_id, dataI.Image_description, dataI.Image_url]]);
                 dataToSendIndex += 1;
             }
         }
@@ -109,8 +119,9 @@ class AdminPage extends Component {
         });
         return dataToSend;
     };
-    insertData = async (projectName, description, url, ProjectId = '0', uploadedImage = null) => {
+    insertData = async (projectName, description, url, ProjectId = '0', uploadedImage = null, projectNameEn, descriptionEn) => {
         let dataToInsert;
+
 
         if (ProjectId !== '0') {
             dataToInsert = {
@@ -124,14 +135,15 @@ class AdminPage extends Component {
                 ProjectOrImage: 'project',
                 Project_name: projectName,
                 Project_description: description,
+                Project_name_en: projectNameEn,
+                Project_description_en: descriptionEn,
                 Project_image_url: "to be set with file",
             }
         }
-
         let insertedData = await this.cmsAction('insert', JSON.stringify(dataToInsert), uploadedImage);
         this.loadData();
     };
-    updateData = async (idToUpdate, projectName, description, url, projectId = '0', uploadedImage = null) => {
+    updateData = async (idToUpdate, projectName, description, url, projectId = '0', uploadedImage = null, projectNameEn, descriptionEn) => {
         let dataToUpdate;
 
         if (projectId !== '0') {
@@ -148,6 +160,8 @@ class AdminPage extends Component {
                 ProjectOrImage: 'project',
                 Project_name: projectName,
                 Project_description: description,
+                Project_name_en: projectNameEn,
+                Project_description_en: descriptionEn,
                 Project_image_url: url,
             }
         }
@@ -201,9 +215,9 @@ class AdminPage extends Component {
                         projectsList.length ? (
                             <Collapse>{
                                 projectsList.map((project, index) => {
-                                    let projectSliced = project.slice(4);
+                                    let projectSliced = project.slice(6);
                                     return (
-                                        <Panel className={'image-panel'} header={project[1]} key={index} extra={(
+                                        <Panel className={'image-panel'} header={project[1] + ', ' + project[3]} key={index} extra={(
                                             <div onClick={(e) => {
                                                 e.stopPropagation()
                                             }}>
@@ -211,12 +225,14 @@ class AdminPage extends Component {
                                                     title="Edit Project"
                                                     visible={EditProjectModalVisible}
                                                     onOk={() => {
-                                                        var n = project[3].lastIndexOf('/');
-                                                        var urlOfImage = project[3].substring(n + 1);
+                                                        // var n = project[5].lastIndexOf('/');
+                                                        // var urlOfImage = project[5].substring(n + 1);
 
                                                         let data = {
                                                             name: project[1],
+                                                            nameEn: project[3],
                                                             description: project[2],
+                                                            descriptionEn: project[4],
                                                             image: null,
                                                             id: project[0]
                                                         };
@@ -227,8 +243,17 @@ class AdminPage extends Component {
                                                         if (this.state.editProjectDescription) {
                                                             data.description = this.state.editProjectDescription;
                                                         }
+                                                        if (this.state.editProjectNameEn) {
+                                                            data.nameEn = this.state.editProjectNameEn;
+                                                        }
+                                                        if (this.state.editProjectDescriptionEn) {
+                                                            data.descriptionEn = this.state.editProjectDescriptionEn;
+                                                        }
                                                         if (this.state.editProjectImageUpload) {
                                                             data.image = this.state.editProjectImageUpload;
+                                                        }
+                                                        if (this.state.editProjectId) {
+                                                            data.id = this.state.editProjectId;
                                                         }
 
                                                         this.handleEditProjectModalOk(data);
@@ -253,6 +278,22 @@ class AdminPage extends Component {
                                                                           editProjectDescription: e.target.value
                                                                       });
                                                                   }}/>
+                                                        <Input type={"text"} placeholder={"Project name en"}
+                                                               value={this.state.editProjectNameEn}
+                                                               className={"update-project-input"}
+                                                               onChange={(e) => {
+                                                                   this.setState({
+                                                                       editProjectNameEn: e.target.value
+                                                                   });
+                                                               }}/>
+                                                        <TextArea rows={4} placeholder={"Project description en"}
+                                                                  value={this.state.editProjectDescriptionEn}
+                                                                  className={"update-project-input"}
+                                                                  onChange={(e) => {
+                                                                      this.setState({
+                                                                          editProjectDescriptionEn: e.target.value
+                                                                      });
+                                                                  }}/>
                                                         <input type="file" name="projectImage"
                                                                className={"update-project-input"}
                                                                onChange={this.editProjectImageUploadHandler}/>
@@ -271,7 +312,7 @@ class AdminPage extends Component {
                                                     type="delete"
                                                     onClick={async event => {
                                                         event.stopPropagation();
-                                                        await this.deleteData('project', project[0], project[3]);
+                                                        await this.deleteData('project', project[0], project[5]);
                                                         this.loadData();
                                                     }}
                                                 />
@@ -280,11 +321,15 @@ class AdminPage extends Component {
                                             <div className={'image-panel-expanded'}>
                                                 <div className={'project-image-description-container'}>
                                                     <div className={'project-image'}>{
-                                                        <img alt="iimage" src={project[3]}/>
+                                                        <img alt="project image" src={project[5]}/>
                                                     }</div>
                                                     <div className={'project-description'}>
                                                         {
                                                             project[2]
+                                                        }
+                                                        <br/>
+                                                        {
+                                                            project[4]
                                                         }
                                                     </div>
                                                 </div>

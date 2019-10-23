@@ -76,8 +76,16 @@ const ProjectsCreateForm = Form.create({name: 'form_in_modal'})(
                                 rules: [{required: true, message: 'Please input the name of project!'}],
                             })(<Input/>)}
                         </Form.Item>
+                        <Form.Item label="Project name en">
+                            {getFieldDecorator('titleEn', {
+                                rules: [{required: true, message: 'Please input the name of project in english!'}],
+                            })(<Input/>)}
+                        </Form.Item>
                         <Form.Item label="Description">
                             {getFieldDecorator('description')(<Input type="textarea"/>)}
+                        </Form.Item>
+                        <Form.Item label="Description en">
+                            {getFieldDecorator('descriptionEn')(<Input type="textarea"/>)}
                         </Form.Item>
                         <Form.Item  label="Upload the main photo of project">
                             <Upload
@@ -131,10 +139,12 @@ class NewProjectModal extends React.Component {
 
             let name = values.title;
             let description = values.description;
+            let nameEn = values.titleEn;
+            let descriptionEn = values.descriptionEn;
             let url = 'https://gamowere.ge/images/callNati.jpeg';
             let projectId = '0';
 
-            this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage);
+            this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage, nameEn, descriptionEn);
         });
     };
 

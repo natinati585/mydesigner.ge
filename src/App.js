@@ -16,9 +16,6 @@ class App extends React.Component {
 
         return (
             <div className={"s-page-container"}>
-                {/*<header className="App-header">*/}
-                {/*    <Admin/>*/}
-                {/*</header>*/}
                 {
                     isAdmin ? <Admin/> : <Home/>
                 }
