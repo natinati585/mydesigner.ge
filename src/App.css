@@ -237,6 +237,178 @@ body {
     float: right;
 }
 
+/*frontend styles*/
+
+/*header*/
+
+.header {
+    /*display: flex;*/
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    padding: 0 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header-menu {
+    margin-left: 100px !important;
+}
+
+.header-menu > * {
+
+}
+
+.header-menu > *:hover {
+    /*background-color: transparent !important;*/
+}
+
+.ant-menu-submenu-popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ant-menu-item:hover {
+    /*background-color: transparent !important;*/
+}
+
+header * {
+    background-color: transparent !important;
+}
+
+.header-main-logo-container {
+    width: 20vw;
+    /*display: inline-block;*/
+    position: absolute;
+    /*vertical-align: middle;*/
+}
+
+.header-main-logo {
+    background-image: url("https://gamowere.ge/frontendMedia/mydesignerLogoBoth2.png");
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    margin: 10px auto;
+    /*position: absolute;*/
+}
+
+.ant-menu {
+    background: none !important;
+    color: white !important;
+}
+
+.ant-menu-horizontal {
+    border-bottom: none !important;
+    display: inline-block;
+    width: 80vw;
+    vertical-align: middle;
+}
+
+.ant-menu-header > :nth-child(2) {
+    background-color: transparent !important;
+}
+
+.header-menu-item-language {
+    float: right;
+    background-color: transparent !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 5px;
+}
+
+.header-menu-item-language.ant-menu-item-selected {
+    background-color: transparent !important;
+}
+
+.header-menu-item-language:hover {
+    background-color: transparent !important;
+}
+
+.header-translator > * {
+    background-color: white !important;
+    color: white !important;
+    padding: 5px 20px !important;
+}
+
+html {
+    /*--antd-wave-shadow-color: #1890ff;*/
+    --antd-wave-shadow-color: black !important;
+}
+::selection {
+    color: #fff;
+    /*background: #1890ff;*/
+    background: black !important;
+}
+.header-translator > *:hover,
+.ant-menu-item-active{
+    background-color: white !important;
+    color: black !important;
+}
+
+.ant-menu-submenu-title:hover {
+    border-bottom: transparent !important;
+    color: white !important;
+}
+
+.ant-menu-submenu-selected, .ant-menu-submenu-active,
+.ant-menu-submenu, .ant-menu-submenu-horizontal, .ant-menu-overflowed-submenu{
+    border-bottom: transparent !important;
+    color: white !important;
+}
+
+.ant-menu-item-selected {
+    /*color: #5a5a5a !important;*/
+    color: black !important;
+    background-color: white !important;
+    border: none !important;
+}
+
+.ant-menu-item {
+    position: relative;
+    top: 0 !important;
+    padding: 0 20px !important;
+    display: inline-block;
+    vertical-align: middle !important;
+    border: none !important;
+}
+
+.ant-menu-item-active {
+    background-color: whitesmoke !important;
+    color: black !important;
+}
+
+.antd-button-style {
+    display: inline-block !important;
+    border: none !important;
+    box-shadow: none !important;
+    /*padding: 0 10px !important;*/
+    border-radius: 0 !important;
+    height: auto !important;
+    background-color: transparent !important;
+}
+
+.antd-button-style:nth-child(1) {
+    /*padding: 10px 10px 10px 0 !important;*/
+}
+
+.antd-button-style:nth-child(2) {
+    /*border-left: 2px solid #5a5a5a !important;*/
+    border-left: 1px solid white !important;
+    /*padding: 10px 0 10px 10px !important;*/
+}
+
+.main-page {
+    background-color: white;
+    height: 100vh;
+}
 
 .inline-responsive {
 }

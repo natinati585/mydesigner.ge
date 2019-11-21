@@ -1,0 +1,29 @@
+/*.raised-button div,*/
+/*.raised-button button {*/
+/*    background-color: transparent !important;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    box-shadow: none !important;*/
+/*}*/
+/*.raised-button > div{*/
+/*    !*position: relative;*!*/
+/*    !*top: -7px;*!*/
+/*    !*border-left: 1px solid lightgray;*!*/
+/*}*/
+
+
+/*.antd-button-style{*/
+/*    display: inline-block !important;*/
+/*    border: none !important;*/
+/*    box-shadow: none !important;*/
+/*    padding: 0 10px !important;*/
+/*    border-radius: 0 !important;*/
+/*    height: auto !important;*/
+/*}*/
+/*.antd-button-style:nth-child(2){*/
+/*    border-left: 2px solid #5a5a5a !important;*/
+/*}*/
+/*.antd-button-style > * {*/
+/*    font-weight: 700;*/
+/*    color: #5a5a5a;*/
+/*}*/

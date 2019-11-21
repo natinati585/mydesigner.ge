@@ -82,13 +82,13 @@ const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
             return (
                 <Modal
                     visible={visible}
-                    title="Add Project"
+                    title="Add Image"
                     okText="Create"
                     onCancel={onCancel}
                     onOk={onCreate}
                 >
                     <Form layout="vertical">
-                        <Form.Item label="Upload the main photo of project">
+                        <Form.Item label="Upload image">
                             <Upload
                                 name="avatar"
                                 listType="picture-card"
