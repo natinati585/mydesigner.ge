@@ -243,12 +243,13 @@ body {
 
 .header {
     /*display: flex;*/
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    max-width: 100vw;
 }
 
 .content-wrapper {
@@ -259,7 +260,8 @@ body {
 }
 
 .header-menu {
-    margin-left: 100px !important;
+    margin-left: 27% !important;
+    width: 67% !important;
 }
 
 .header-menu > * {
@@ -374,7 +376,7 @@ html {
 .ant-menu-item {
     position: relative;
     top: 0 !important;
-    padding: 0 20px !important;
+    padding: 3px 20px !important;
     display: inline-block;
     vertical-align: middle !important;
     border: none !important;
@@ -403,11 +405,6 @@ html {
     /*border-left: 2px solid #5a5a5a !important;*/
     border-left: 1px solid white !important;
     /*padding: 10px 0 10px 10px !important;*/
-}
-
-.main-page {
-    background-color: white;
-    height: 100vh;
 }
 
 .inline-responsive {

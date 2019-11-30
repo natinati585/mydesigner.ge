@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 
-export default class Service extends React.Component{
+class Service extends React.Component{
 
 
     render() {
@@ -11,3 +12,9 @@ export default class Service extends React.Component{
         )
     }
 }
+
+const mapStateToProps = storeState => ({
+    language: storeState.language
+});
+
+export default connect(mapStateToProps)(Service);

@@ -54,7 +54,6 @@ class Home extends Component {
             <div>
                 <Header homeState={this.homeStateChanger}/>
                 <div className={'main-page'}>
-                    <p>{T("Home")}</p>
                     {this.state.currPage}
                 </div>
             </div>

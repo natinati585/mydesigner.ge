@@ -46,7 +46,7 @@ export default class App extends React.Component {
         // console.log('header');
         return (
             <div className={'header'}>
-                <div className={'content-wrapper'}>
+                <div>
                     <div className={'header-main-logo-container'}>
                         <div className={'header-main-logo'}></div>
                     </div>

@@ -3,26 +3,27 @@ import TranslateBox from "../translator/TranslateBox";
 import T from "../translator/translate.js";
 import TL from "../translator/changeLanguage";
 import EventsManager from '../../../eventsManager/EventsManager';
+import {connect} from "react-redux";
+import {updateLanguage} from "../../../reduxActions/language-actions";
 
-export default class About extends React.Component{
-
-
+class About extends React.Component {
+    forUpdateUser = () => {
+        console.log(this.props);
+        this.props.onUpdateUser('Sammy');
+    };
     render() {
-        return(
+        return (
             <div>
                 about page
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
                 <p>{T("Home")}</p>
                 <hr/>
-                <TranslateBox homeState={this.props.homeState}/>
             </div>
         )
     }
 }
+
+const mapStateToProps = storeState => ({
+    language: storeState.language
+});
+
+export default connect(mapStateToProps)(About);

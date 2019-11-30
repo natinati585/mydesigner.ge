@@ -2,22 +2,28 @@ import React from 'react';
 import './App.css';
 import Home from './components/Home/Home'
 import Admin from "./components/cms/Admin";
+
 import {connect} from 'react-redux';
-// import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import {updateLanguage} from "./reduxActions/language-actions";
 
 class App extends React.Component {
+    state;
     constructor(props) {
         super(props);
 
         this.state = {
-            admin: false
-        }
+            admin: false,
+            language: 'en'
+        };
     }
+
+    forUpdateLanguage = () => {
+        console.log(this.props);
+        this.props.onUpdateLanguage(this.state.language);
+    };
 
     render() {
         let isAdmin = window.location.href.includes('/admin');
-
-        console.log(this.props);
 
         return (
             <div className={"s-page-container"}>
@@ -29,8 +35,12 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return state;
+const mapStateToProps = storeState => ({
+    language: storeState.language
+});
+
+const mapActionsToProps = {
+    onUpdateLanguage: updateLanguage
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapActionsToProps)(App);

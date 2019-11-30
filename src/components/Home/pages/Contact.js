@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
 
-export default class Contact extends React.Component{
+class Contact extends React.Component{
 
 
     render() {
@@ -11,3 +12,9 @@ export default class Contact extends React.Component{
         )
     }
 }
+
+const mapStateToProps = storeState => ({
+    language: storeState.language
+});
+
+export default connect(mapStateToProps)(Contact);
