@@ -226,6 +226,7 @@ body {
 
 .image-container {
     background-size: cover;
+    background-position: center;
     height: 140px;
     max-width: 301px;
     margin: 1%;
@@ -337,20 +338,22 @@ header * {
 .header-translator > * {
     background-color: white !important;
     color: white !important;
-    padding: 5px 20px !important;
+    padding: 0 20px !important;
 }
 
 html {
     /*--antd-wave-shadow-color: #1890ff;*/
     --antd-wave-shadow-color: black !important;
 }
+
 ::selection {
     color: #fff;
     /*background: #1890ff;*/
     background: black !important;
 }
+
 .header-translator > *:hover,
-.ant-menu-item-active{
+.ant-menu-item-active {
     background-color: white !important;
     color: black !important;
 }
@@ -361,7 +364,7 @@ html {
 }
 
 .ant-menu-submenu-selected, .ant-menu-submenu-active,
-.ant-menu-submenu, .ant-menu-submenu-horizontal, .ant-menu-overflowed-submenu{
+.ant-menu-submenu, .ant-menu-submenu-horizontal, .ant-menu-overflowed-submenu {
     border-bottom: transparent !important;
     color: white !important;
 }
@@ -405,6 +408,159 @@ html {
     /*border-left: 2px solid #5a5a5a !important;*/
     border-left: 1px solid white !important;
     /*padding: 10px 0 10px 10px !important;*/
+}
+
+/*service*/
+
+
+.service-content {
+}
+
+.service-image {
+    background-image: url("https://gamowere.ge/images/5db354f85f2352.65801916.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.service-flex-container {
+    display: flex;
+}
+
+.service-flex-container :nth-child(2){
+    width: 100%;
+}
+
+.service-text-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: -27vh;
+    margin-bottom: 10vh;
+    margin-left: 3%;
+    width: 90vw;
+    max-width: 700px;
+    background-color: rgba(235, 235, 235, 0.85);
+    padding: 10px 15px 20vh 15px;
+
+    flex: 0 0 90vw;
+}
+
+.service-text {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.service-text p {
+}
+
+/*about-us*/
+
+.about-us-content {
+}
+
+.about-us-image {
+    background-image: url("https://gamowere.ge/images/5db356b62e65b8.93045071.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.about-us-flex-container {
+    display: flex;
+}
+
+.about-us-flex-container :nth-child(1){
+    width: 100%;
+}
+
+.about-us-text-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: -27vh;
+    margin-bottom: 10vh;
+    margin-right: 3%;
+    width: 90vw;
+    max-width: 700px;
+    background-color: rgba(235, 235, 235, 0.85);
+    padding: 10px 15px 20vh 15px;
+
+    flex: 0 0 90vw;
+}
+
+.about-us-text {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.about-us-text p {
+    /*padding: 5px;*/
+    /*text-align: left;*/
+    /*color: #60635f;*/
+    /*font-size: 14px;*/
+    /*line-height: 20px;*/
+    /*width: 90%;*/
+    /*margin-top: -10px;*/
+    /*margin-left: 2%;*/
+}
+
+/*footer*/
+
+.main-footer-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-footer-relative {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 15px 0 0 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-icons {
+    text-align: center;
+    margin-bottom: -0.5vw;
+}
+
+.footer-icons :nth-child(1) {
+    background-image: url("https://gamowere.ge/frontendMedia/icon1.png");
+}
+
+.footer-icons :nth-child(2) {
+    background-image: url("https://gamowere.ge/frontendMedia/icon2.png");
+}
+
+.footer-icons :nth-child(3) {
+    background-image: url("https://gamowere.ge/frontendMedia/icon3.png");
+}
+
+.footer-icon {
+    cursor: pointer;
+    width: 27px;
+    height: 27px;
+}
+
+.footer-icons > div {
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 30px;
+    background-repeat: no-repeat;
+}
+
+.footer-copyright {
+    padding: 0 0 5px 10px;
 }
 
 .inline-responsive {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import './main.css';
 import ImagesAnimated from '../../imagesAnimated/ImagesAnimated'
+import Footer from "../Footer";
 
 class Main extends React.Component {
 
@@ -35,21 +36,10 @@ class Main extends React.Component {
 
         return (
             <div>
-                {/*<ImageGallery*/}
-                {/*    items={images}*/}
-                {/*    showThumbnails={false}*/}
-                {/*    showNav={false}*/}
-                {/*    showFullscreenButton={false}*/}
-                {/*    showPlayButton={false}*/}
-                {/*    autoPlay={true}*/}
-                {/*    slideDuration={1000}*/}
-                {/*    slideInterval={5000}*/}
-                {/*    onImageLoad = {(e) => {*/}
-                {/*        // console.log('onslide ', e.currentTarget);*/}
-                {/*        // e.currentTarget.classList.add('image-gallery-slide-animation')*/}
-                {/*    }}*/}
-                {/*/>*/}
                 <ImagesAnimated imagesArray={images}/>
+                <div className={'main-footer-container'}>
+                    <Footer/>
+                </div>
             </div>
         )
     }

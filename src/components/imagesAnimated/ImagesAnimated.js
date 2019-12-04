@@ -21,8 +21,6 @@ class ImagesAnimated extends React.Component {
     animator = () => {
         let previousUrlIndex = (this.state.previousUrlIndex + 1) % this.imagesArray.length;
 
-        console.log(previousUrlIndex);
-
         this.setState({
             previousUrlIndex: previousUrlIndex,
         });
