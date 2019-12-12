@@ -46,7 +46,7 @@ class Contact extends React.Component {
             successWaiting: 1
         });
 
-        let result = await axios.post('https://gamowere.ge/php/sendToMail.php', formData);
+        let result = await axios.post('https://mydesigner.ge/php/sendToMail.php', formData);
 
         this.setState({
             successWaiting: 0,

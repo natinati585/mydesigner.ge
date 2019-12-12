@@ -32,7 +32,7 @@ class Home extends Component {
     };
 
     getPHP = async () => {
-        let res = await axios.post('http://gamowere.ge/php/login.php', qs.stringify({
+        let res = await axios.post('http://mydesigner.ge/php/login.php', qs.stringify({
             'email': 'sofo',
             'password': 'sofosofo1234'
         }));

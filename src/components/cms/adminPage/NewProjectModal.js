@@ -141,7 +141,7 @@ class NewProjectModal extends React.Component {
             let description = values.description;
             let nameEn = values.titleEn;
             let descriptionEn = values.descriptionEn;
-            let url = 'https://gamowere.ge/images/callNati.jpeg';
+            let url = 'https://mydesigner.ge/images/callNati.jpeg';
             let projectId = '0';
 
             this.props.valuesFetcher(name, description, url, projectId, this.state.fetchedImage, nameEn, descriptionEn);

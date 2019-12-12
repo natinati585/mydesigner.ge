@@ -23,7 +23,7 @@ class Admin extends React.Component {
 
     checkSession = async () => {
         try {
-            let res = await axios.post('https://gamowere.ge/php/checkSession.php', qs.stringify({
+            let res = await axios.post('https://mydesigner.ge/php/checkSession.php', qs.stringify({
                 'checkSession': 'checkSession'
             }));
 
