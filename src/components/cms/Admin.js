@@ -3,6 +3,7 @@ import AdminLogin from "./AdminLogin";
 import qs from "qs";
 import AdminPage from "./adminPage/AdminPage";
 import {Spin} from "antd";
+import './admin.css';
 
 const axios = require('axios').default;
 

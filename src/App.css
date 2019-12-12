@@ -1,3 +1,6 @@
+@import "~bpg-extrasquare-mtavruli";
+@import "~bpg-nino-elite-caps";
+
 /*  ქართულენოვანი ვერსიისთვის ფონტის შერჩევა  */
 * {
     font-family: "BPG Nino Elite Exp", sans-serif;
@@ -28,230 +31,7 @@ body {
     padding: 0;
 }
 
-/*ვებ-გვერდის სტილები*/
-
-.s-page-container {
-}
-
-/*login form*/
-.admin-login-page-container {
-    padding-top: 20vh;
-    height: 100vh;
-}
-
-.admin-login-heading {
-    text-align: center;
-    padding: 3% 0;
-    font-size: 20px;
-    color: #1890ff;
-    font-weight: 700;
-}
-
-.admin-login-form {
-}
-
-/*logout*/
-
-.logout-button {
-    font-size: 30px;
-    color: #2196F3 !important;
-    margin: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.admin-page-space-filler {
-    height: 10vh;
-    width: 100%;
-}
-
-.add-new-container {
-    display: flex;
-    margin: Calc(1% - 5px);
-}
-
-.add-new-project-or-image-container {
-    width: 100%;
-    margin: 5px;
-    /*border: 1px solid #9E9E9E;*/
-    border: 1px solid #2196F3;
-    border-radius: 3px;
-    /*padding: 7px;*/
-    cursor: pointer;
-    font-size: 20px;
-    /*color: #7d7d7d !important;*/
-    color: #2196F3 !important;
-    text-align: center;
-}
-
-.add-new-project-or-image-container > div {
-    padding: 7px;
-}
-
-.add-new-project-or-image-container:hover {
-    background-color: #edf6fc;
-}
-
-.add-new-image-container {
-    width: 98%;
-    margin: 5px 1%;
-    /*border: 1px solid #9E9E9E;*/
-    border: 1px solid #2196F3;
-    border-radius: 3px;
-    padding: 7px;
-    cursor: pointer;
-    font-size: 20px;
-    /*color: #7d7d7d !important;*/
-    color: #2196F3 !important;
-    text-align: center;
-}
-
-.admin-table-container {
-    margin: 1%;
-    border: 1px solid #2196F3;
-    border-radius: 3px;
-}
-
-.admin-table-icon {
-    padding: 5px;
-    border-radius: 3px;
-}
-
-.admin-table-icon:hover {
-    background-color: #bae7ff;
-}
-
-.add-new-project-icon, .add-new-image-icon {
-    display: inline-block !important;
-    margin: 0 20px;
-}
-
-.add-new-project-text, .add-new-image-text {
-    /*display: block !important;*/
-    display: inline-block !important;
-    margin: 0;
-}
-
-.update-project-input {
-    margin: 10px 0 !important;
-}
-
-.no-progects-added {
-    margin: 20px;
-    text-align: center;
-    /*color: #2196F3;*/
-}
-
-/*antd login form styles*/
-.login-form {
-    max-width: 300px;
-    margin: 0 auto !important;
-}
-
-.login-form-forgot {
-    float: right;
-}
-
-.login-form-button {
-    width: 100%;
-}
-
-.ant-input {
-    height: 40px !important;
-}
-
-.login-form-button {
-    /*background-color: mediumseagreen !important;*/
-    /*border-color: #479a6c !important;*/
-}
-
-/*antd spin styles*/
-.login-spin {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 4px;
-    padding: 30px 50px;
-    margin: 20px 0;
-}
-
-.ant-collapse-content-box {
-    padding: 0 !important;
-}
-
-.project-image {
-    background-size: contain;
-}
-
-.project-image > img {
-    max-width: 50vw;
-    max-height: 50vh;
-}
-
-.project-description {
-}
-
-.project-image-description-container {
-    display: flex;
-}
-
-.project-image-description-container > * {
-    padding: 1%;
-    width: 100%;
-    text-align: center;
-}
-
-.image-panel {
-    background-color: white;
-}
-
-.ant-collapse > .ant-collapse-item {
-    border-bottom: 1px solid #2196F3 !important;
-}
-
-.image-panel-expanded {
-
-}
-
-.images-container {
-    display: flex;
-    flex-wrap: wrap;
-    max-height: 500px;
-    overflow-y: scroll;
-    background-color: white;
-    /*padding: 1%;*/
-    border-radius: 3px;
-    border-top: 1px solid #e5e5e5;
-}
-
-.image-container {
-    background-size: cover;
-    background-position: center;
-    height: 140px;
-    max-width: 301px;
-    margin: 1%;
-}
-
-.image-container > i {
-    background-color: rgba(255, 255, 255, 0.7);
-    margin: 5px;
-    float: right;
-}
-
 /*frontend styles*/
-
-/*header*/
-
-.header {
-    /*display: flex;*/
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    max-width: 100vw;
-}
 
 .content-wrapper {
     max-width: 1200px;
@@ -260,307 +40,28 @@ body {
     position: relative;
 }
 
-.header-menu {
-    margin-left: 27% !important;
-    width: 67% !important;
+.simple-text {
+    font-family: "BPG Nino Elite Caps", sans-serif;
+    font-weight: 700;
 }
 
-.header-menu > * {
-
+.sub-text {
+    /*font-family: "BPG LE Studio 02 Caps", sans-serif;*/
+    font-family: "BPG Nino Elite Caps", sans-serif;
+    font-weight: 700;
 }
 
-.header-menu > *:hover {
-    /*background-color: transparent !important;*/
-}
-
-.ant-menu-submenu-popup {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-}
-
-.ant-menu-item:hover {
-    /*background-color: transparent !important;*/
-}
-
-header * {
-    background-color: transparent !important;
-}
-
-.header-main-logo-container {
-    width: 20vw;
-    /*display: inline-block;*/
+.header-text {
+    /*font-family: ALKDots, sans-serif !important;*/
+    /*font-family: "ALK Rex Bold", sans-serif !important;*/
+    font-family: "BPG ExtraSquare Mtavruli", sans-serif;
+    font-weight: 700;
+    /*color: white;*/
+    color: rgb(235, 235, 235);
+    text-shadow: 0 0 5px black;
+    padding-left: 27px;;
     position: absolute;
-    /*vertical-align: middle;*/
-}
-
-.header-main-logo {
-    background-image: url("https://gamowere.ge/frontendMedia/mydesignerLogoBoth2.png");
-    width: 70px;
-    height: 70px;
-    background-size: contain;
-    margin: 10px auto;
-    /*position: absolute;*/
-}
-
-.ant-menu {
-    background: none !important;
-    color: white !important;
-}
-
-.ant-menu-horizontal {
-    border-bottom: none !important;
-    display: inline-block;
-    width: 80vw;
-    vertical-align: middle;
-}
-
-.ant-menu-header > :nth-child(2) {
-    background-color: transparent !important;
-}
-
-.header-menu-item-language {
-    float: right;
-    background-color: transparent !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
-    padding-right: 0 !important;
-    padding-left: 10px !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 5px;
-}
-
-.header-menu-item-language.ant-menu-item-selected {
-    background-color: transparent !important;
-}
-
-.header-menu-item-language:hover {
-    background-color: transparent !important;
-}
-
-.header-translator > * {
-    background-color: white !important;
-    color: white !important;
-    padding: 0 20px !important;
-}
-
-html {
-    /*--antd-wave-shadow-color: #1890ff;*/
-    --antd-wave-shadow-color: black !important;
-}
-
-::selection {
-    color: #fff;
-    /*background: #1890ff;*/
-    background: black !important;
-}
-
-.header-translator > *:hover,
-.ant-menu-item-active {
-    background-color: white !important;
-    color: black !important;
-}
-
-.ant-menu-submenu-title:hover {
-    border-bottom: transparent !important;
-    color: white !important;
-}
-
-.ant-menu-submenu-selected, .ant-menu-submenu-active,
-.ant-menu-submenu, .ant-menu-submenu-horizontal, .ant-menu-overflowed-submenu {
-    border-bottom: transparent !important;
-    color: white !important;
-}
-
-.ant-menu-item-selected {
-    /*color: #5a5a5a !important;*/
-    color: black !important;
-    background-color: white !important;
-    border: none !important;
-}
-
-.ant-menu-item {
-    position: relative;
-    top: 0 !important;
-    padding: 3px 20px !important;
-    display: inline-block;
-    vertical-align: middle !important;
-    border: none !important;
-}
-
-.ant-menu-item-active {
-    background-color: whitesmoke !important;
-    color: black !important;
-}
-
-.antd-button-style {
-    display: inline-block !important;
-    border: none !important;
-    box-shadow: none !important;
-    /*padding: 0 10px !important;*/
-    border-radius: 0 !important;
-    height: auto !important;
-    background-color: transparent !important;
-}
-
-.antd-button-style:nth-child(1) {
-    /*padding: 10px 10px 10px 0 !important;*/
-}
-
-.antd-button-style:nth-child(2) {
-    /*border-left: 2px solid #5a5a5a !important;*/
-    border-left: 1px solid white !important;
-    /*padding: 10px 0 10px 10px !important;*/
-}
-
-/*service*/
-
-
-.service-content {
-}
-
-.service-image {
-    background-image: url("https://gamowere.ge/images/5db354f85f2352.65801916.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 60vh;
-}
-
-.service-flex-container {
-    display: flex;
-}
-
-.service-flex-container :nth-child(2){
-    width: 100%;
-}
-
-.service-text-container {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: -27vh;
-    margin-bottom: 10vh;
-    margin-left: 3%;
-    width: 90vw;
-    max-width: 700px;
-    background-color: rgba(235, 235, 235, 0.85);
-    padding: 10px 15px 20vh 15px;
-
-    flex: 0 0 90vw;
-}
-
-.service-text {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.service-text p {
-}
-
-/*about-us*/
-
-.about-us-content {
-}
-
-.about-us-image {
-    background-image: url("https://gamowere.ge/images/5db356b62e65b8.93045071.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 60vh;
-}
-
-.about-us-flex-container {
-    display: flex;
-}
-
-.about-us-flex-container :nth-child(1){
-    width: 100%;
-}
-
-.about-us-text-container {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-top: -27vh;
-    margin-bottom: 10vh;
-    margin-right: 3%;
-    width: 90vw;
-    max-width: 700px;
-    background-color: rgba(235, 235, 235, 0.85);
-    padding: 10px 15px 20vh 15px;
-
-    flex: 0 0 90vw;
-}
-
-.about-us-text {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.about-us-text p {
-    /*padding: 5px;*/
-    /*text-align: left;*/
-    /*color: #60635f;*/
-    /*font-size: 14px;*/
-    /*line-height: 20px;*/
-    /*width: 90%;*/
-    /*margin-top: -10px;*/
-    /*margin-left: 2%;*/
-}
-
-/*footer*/
-
-.main-footer-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.main-footer-relative {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 15px 0 0 0;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.footer-icons {
-    text-align: center;
-    margin-bottom: -0.5vw;
-}
-
-.footer-icons :nth-child(1) {
-    background-image: url("https://gamowere.ge/frontendMedia/icon1.png");
-}
-
-.footer-icons :nth-child(2) {
-    background-image: url("https://gamowere.ge/frontendMedia/icon2.png");
-}
-
-.footer-icons :nth-child(3) {
-    background-image: url("https://gamowere.ge/frontendMedia/icon3.png");
-}
-
-.footer-icon {
-    cursor: pointer;
-    width: 27px;
-    height: 27px;
-}
-
-.footer-icons > div {
-    width: 25px;
-    height: 25px;
-    background-size: contain;
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 30px;
-    background-repeat: no-repeat;
-}
-
-.footer-copyright {
-    padding: 0 0 5px 10px;
+    width: 95% !important;
 }
 
 .inline-responsive {
@@ -573,12 +74,26 @@ html {
 /*}*/
 
 /*საერთო სტილები responsive-სთვის*/
+
+.simple-text {
+    font-size: 12px;
+}
+
+.sub-text {
+    font-size: 13px;
+}
+
+.header-text {
+    font-size: 22px;
+    margin-top: -30px;
+}
+
 .inline-responsive {
     display: block;
 }
 
 .width-100-28-29 {
-    width: 100%;
+    width: 100% !important;
 }
 
 .width-100-38-39 {
@@ -600,9 +115,20 @@ html {
 /*  ტაბლეტებისთვის:  */
 @media only screen and (min-width: 646px) {
 
-    /*.image-container {*/
-    /*    width: 33%;*/
-    /*}*/
+    .simple-text {
+        font-size: 14px;
+    }
+
+    .sub-text {
+        font-size: 13px;
+    }
+
+    .header-text {
+        font-size: 40px;
+        margin-top: -46px;
+    }
+
+
     /*საერთო სტილები responsive-სთვის*/
     .inline-responsive {
         display: inline-block;
@@ -610,7 +136,7 @@ html {
     }
 
     .width-100-28-29 {
-        width: 28%;
+        width: 28% !important;
     }
 
     .width-100-38-39 {
@@ -632,9 +158,20 @@ html {
 
 /*  დესკტოპისთვის:  */
 @media only screen and (min-width: 900px) {
-    /*.image-container {*/
-    /*    width: 20%;*/
-    /*}*/
+
+    .simple-text {
+        font-size: 14px;
+    }
+
+    .sub-text {
+        font-size: 13px;
+    }
+
+    .header-text {
+        font-size: 50px;
+        margin-top: -55px;
+    }
+
     /*საერთო სტილები responsive-სთვის*/
     .inline-responsive {
         display: inline-block;
@@ -642,7 +179,7 @@ html {
     }
 
     .width-100-28-29 {
-        width: 29%;
+        width: 29% !important;
     }
 
     .width-100-38-39 {

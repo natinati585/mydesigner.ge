@@ -5,6 +5,15 @@ import ImagesAnimated from '../../imagesAnimated/ImagesAnimated'
 import Footer from "../Footer";
 
 class Main extends React.Component {
+    _isMounted = false;
+
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
 
     render() {
         const images = [

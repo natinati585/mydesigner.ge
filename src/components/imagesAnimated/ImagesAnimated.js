@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import './imagesAnimated.css';
 
 class ImagesAnimated extends React.Component {
+    _isMounted = false;
 
     constructor(props) {
         super(props);
@@ -15,15 +16,24 @@ class ImagesAnimated extends React.Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
+
         let animate = setInterval(this.animator, this.animationDelay);
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     animator = () => {
         let previousUrlIndex = (this.state.previousUrlIndex + 1) % this.imagesArray.length;
 
-        this.setState({
-            previousUrlIndex: previousUrlIndex,
-        });
+        if (this._isMounted) {
+            this.setState({
+                previousUrlIndex: previousUrlIndex,
+            });
+        }
+
     };
 
     render() {

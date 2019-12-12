@@ -26,11 +26,11 @@ class App extends React.Component {
     render() {
         return (
             <div className={'header-translator'}>
-                <Button className={'antd-button-style'} onClick={() => {
+                <Button className={'antd-button-style sub-text'} onClick={() => {
                     TL('ge');
                     this.forUpdateLanguage('ge');
                 }}>GEO</Button>
-                <Button className={'antd-button-style'} onClick={() => {
+                <Button className={'antd-button-style sub-text'} onClick={() => {
                     TL('en');
                     this.forUpdateLanguage('en');
                 }}>ENG</Button>

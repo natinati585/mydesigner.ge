@@ -6,8 +6,19 @@ import EventsManager from '../../../eventsManager/EventsManager';
 import {connect} from "react-redux";
 import {updateLanguage} from "../../../reduxActions/language-actions";
 import Footer from "../Footer";
+import './about.css';
 
 class About extends React.Component {
+    _isMounted = false;
+
+    componentDidMount() {
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
     forUpdateUser = () => {
         console.log(this.props);
         this.props.onUpdateUser('Sammy');
@@ -24,21 +35,32 @@ class About extends React.Component {
                         <div>
                         </div>
                         <div className={'about-us-text-container'}>
-                            <p className={'about-us-text'}>
-                                <h1>ჩვენს შესახებ</h1>
-                                <p>ჩვენი გუნდი ქმნის ინტერიერის დიზანს და ანხორციელებს საპროექტო და არქიტექტურულ
-                                მომსახურეობას როგორც საცხოვრებელი, ასევე საოფისე, სავაჭრო და კომერციული
-                                ფართებისთვის.</p>
-                                <h5><strong><span className="&quot;_4yxo&quot;">&nbsp; &nbsp;ჩვენი დიზაინ-პროექტი ითვალისწინებს:&nbsp;&nbsp;</span></strong>
-                                </h5>
-                                <p>◾ ობიექტის რაციონალურად ზონირებას;</p>
-                                <p>◾ ინტერიერის არა მხოლოდ ვიზუალურად დახვეწას, არამედ მის ერგონომიკულ გამართულობას
-                                    და მორგებას დამკვეთის ინტერესებთან;</p>
-                                <p>◾ ვიზუალიზაციის უმაღლეს, რეალისტურ სახეს;</p>
-                                <p>◾ ტექნიკურად გამართულ სამუშაო ნახაზებს;&nbsp;</p>
-                                <p>◾ პრაქტიკულად შესრულებად სარემონტო, ავეჯის მოწყობის და სხვა სამუშაოებს - რეალური,
-                                    ხელმისაწვდომი მასალებით.</p>    <p></p>
-                            </p>
+                            <div className={'about-us-text'}>
+                                <h1 className={'header-text'}>
+                                    {T('Bio')}
+                                </h1>
+                                <div>
+                                    <h6 className={'simple-text'}>
+                                        &emsp;
+                                        {
+                                            T('Bio1')
+                                        }</h6>
+                                </div>
+                                <div>
+                                    <h6 className={'simple-text'}>
+                                        &emsp;
+                                        {
+                                            T('Bio2')
+                                        }</h6>
+                                </div>
+                                <div>
+                                    <h6 className={'simple-text'}>
+                                        &emsp;
+                                        {
+                                            T('Bio3')
+                                        }</h6>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,100 @@
+/*contact*/
+img {
+    vertical-align: top;
+}
+
+input {
+    background: none !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid #737373 !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.react-phone-number-input__input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset !important;
+}
+
+.contact {
+}
+
+.contact-image {
+    background-image: url(https://gamowere.ge/images/5db354f85f2352.65801916.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.contact-inputs-container {
+    /*min-height: 400px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: -27vh;
+    margin-bottom: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
+    max-width: 700px;
+    background-color: rgba(235, 235, 235, 0.85);
+    padding: 10px 15px 11vh 15px;
+    position: relative;
+}
+
+.contact-form{
+    padding: 10vh 5% 5% 5%;
+}
+
+.contact-input::before{
+    content: "*";
+    color: red;
+    font-weight: bold;
+}
+
+.contact-input:focus{
+    outline: none;
+}
+
+.contact-input {
+    border: none;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    width: Calc( 100% - 35px );
+    background: none;
+    border-bottom: 1px solid gray;
+}
+
+.contact-number-input{
+    margin-bottom: 20px;
+}
+.contact-submit-container{
+    text-align: right;
+}
+.contact-submit{
+    width: 100%;
+    max-width: 250px;
+    padding: 8px 5px 5px 5px;
+    border-radius: 4px;
+    border: 1px solid gray;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.contact-submit:hover {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+.contact-submit:focus{
+    outline: none;
+}
+
+.success-waiting,
+.success-message
+{
+    color: red;
+}

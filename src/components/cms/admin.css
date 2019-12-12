@@ -1,0 +1,204 @@
+/*login form*/
+.admin-login-page-container {
+    padding-top: 20vh;
+    height: 100vh;
+}
+
+.admin-login-heading {
+    text-align: center;
+    padding: 3% 0;
+    font-size: 20px;
+    color: #1890ff;
+    font-weight: 700;
+}
+
+.admin-login-form {
+}
+
+/*logout*/
+
+.logout-button {
+    font-size: 30px;
+    color: #2196F3 !important;
+    margin: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.admin-page-space-filler {
+    height: 10vh;
+    width: 100%;
+}
+
+.add-new-container {
+    display: flex;
+    margin: Calc(1% - 5px);
+}
+
+.add-new-project-or-image-container {
+    width: 100%;
+    margin: 5px;
+    /*border: 1px solid #9E9E9E;*/
+    border: 1px solid #2196F3;
+    border-radius: 3px;
+    /*padding: 7px;*/
+    cursor: pointer;
+    font-size: 20px;
+    /*color: #7d7d7d !important;*/
+    color: #2196F3 !important;
+    text-align: center;
+}
+
+.add-new-project-or-image-container > div {
+    padding: 7px;
+}
+
+.add-new-project-or-image-container:hover {
+    background-color: #edf6fc;
+}
+
+.add-new-image-container {
+    width: 98%;
+    margin: 5px 1%;
+    /*border: 1px solid #9E9E9E;*/
+    border: 1px solid #2196F3;
+    border-radius: 3px;
+    padding: 7px;
+    cursor: pointer;
+    font-size: 20px;
+    /*color: #7d7d7d !important;*/
+    color: #2196F3 !important;
+    text-align: center;
+}
+
+.admin-table-container {
+    margin: 1%;
+    border: 1px solid #2196F3;
+    border-radius: 3px;
+}
+
+.admin-table-icon {
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.admin-table-icon:hover {
+    background-color: #bae7ff;
+}
+
+.add-new-project-icon, .add-new-image-icon {
+    display: inline-block !important;
+    margin: 0 20px;
+}
+
+.add-new-project-text, .add-new-image-text {
+    /*display: block !important;*/
+    display: inline-block !important;
+    margin: 0;
+}
+
+.update-project-input {
+    margin: 10px 0 !important;
+}
+
+.no-progects-added {
+    margin: 20px;
+    text-align: center;
+    /*color: #2196F3;*/
+}
+
+/*antd login form styles*/
+.login-form {
+    max-width: 300px;
+    margin: 0 auto !important;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+}
+
+.ant-input {
+    height: 40px !important;
+}
+
+.login-form-button {
+    /*background-color: mediumseagreen !important;*/
+    /*border-color: #479a6c !important;*/
+}
+
+/*antd spin styles*/
+.login-spin {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 30px 50px;
+    margin: 20px 0;
+}
+
+.ant-collapse-content-box {
+    padding: 0 !important;
+}
+
+.project-image {
+    background-size: contain;
+}
+
+.project-image > img {
+    max-width: 50vw;
+    max-height: 50vh;
+}
+
+.project-description {
+}
+
+.project-image-description-container {
+    display: flex;
+}
+
+.project-image-description-container > * {
+    padding: 1%;
+    width: 100%;
+    text-align: center;
+}
+
+.image-panel {
+    background-color: white;
+}
+
+.ant-collapse > .ant-collapse-item {
+    border-bottom: 1px solid #2196F3 !important;
+}
+
+.image-panel-expanded {
+
+}
+
+.images-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 500px;
+    overflow-y: scroll;
+    background-color: white;
+    /*padding: 1%;*/
+    border-radius: 3px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.image-container {
+    background-size: cover;
+    background-position: center;
+    height: 140px;
+    max-width: 301px;
+    margin: 1%;
+}
+
+.image-container > i {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 5px;
+    float: right;
+}

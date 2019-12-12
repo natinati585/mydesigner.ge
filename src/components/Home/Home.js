@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import qs from 'qs'
-import TranslateBox from "./translator/TranslateBox";
-import T from "./translator/translate.js";
-import TL from "./translator/changeLanguage";
-import EventsManager from '../../eventsManager/EventsManager';
 import Header from "./Header";
 import Main from "./pages/Main";
 
 const axios = require('axios').default;
 
 class Home extends Component {
+    _isMounted = false;
+
     constructor(props) {
         super(props);
 
@@ -20,12 +18,11 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        // EventsManager.listen('changeLanguage', (language) => {
-        //     console.log("must have been changed");
-        //     this.setState({
-        //         currLanguage: language
-        //     });
-        // })
+        this._isMounted = true;
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     homeStateChanger = (stateToChange, stateToChangeValue) => {
@@ -44,12 +41,6 @@ class Home extends Component {
     };
 
     render() {
-        // let windowUrl = window.location.href;
-        // console.log(windowUrl);
-        // console.log('home', this.state);
-
-        // TL(this.state.language);
-
         return (
             <div>
                 <Header homeState={this.homeStateChanger}/>

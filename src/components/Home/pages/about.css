@@ -1,0 +1,62 @@
+/*about-us*/
+
+.about-us-content {
+}
+
+.about-us-image {
+    background-image: url("https://gamowere.ge/images/5db356b62e65b8.93045071.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+}
+
+.about-us-flex-container {
+    display: flex;
+}
+
+.about-us-flex-container :nth-child(1) {
+    width: 100%;
+}
+
+.about-us-text-container {
+    /*min-height: 400px;*/
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: -27vh;
+    margin-bottom: 10vh;
+    margin-right: 3%;
+    width: 90vw;
+    max-width: 700px;
+    background-color: rgba(235, 235, 235, 0.85);
+    padding: 10px 15px 11vh 15px;
+    position: relative;
+
+    flex: 0 0 90vw;
+}
+
+.about-us-text-container > div :nth-child(2){
+    padding-top: 7vh;
+}
+
+.about-us-text-container > div > div {
+    padding: 1vh 1vw;
+}
+
+.about-us-text {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.about-us-text p {
+    /*padding: 5px;*/
+    /*text-align: left;*/
+    /*color: #60635f;*/
+    /*font-size: 14px;*/
+    /*line-height: 20px;*/
+    /*width: 90%;*/
+    /*margin-top: -10px;*/
+    /*margin-left: 2%;*/
+}
