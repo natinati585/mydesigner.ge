@@ -42,9 +42,7 @@ const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
         handleChange = info => {
             if (info.file.status === 'uploading') {
                 this.setState({loading: true});
-                return;
-            }
-            if (info.file.status === 'done') {
+            } else {
                 // Get this url from response in real world.
                 getBase64(info.file.originFileObj, imageUrl =>
                     this.setState({
@@ -60,6 +58,7 @@ const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
         };
 
         render() {
+            console.log('imageUrl', this.state.imageUrl)
             const projects = this.props.projects;
             const projectsOrganised = [];
 
@@ -94,7 +93,7 @@ const ImagesCreateForm = Form.create({name: 'form_in_modal'})(
                                 listType="picture-card"
                                 className="avatar-uploader"
                                 showUploadList={false}
-                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                                // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                                 beforeUpload={beforeUpload}
                                 onChange={this.handleChange}
                             >
