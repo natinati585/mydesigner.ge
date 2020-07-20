@@ -58,6 +58,9 @@ class Home extends Component {
                             <Route path="/contact">
                                 <Contact/>
                             </Route>
+                            <Route path="/photo-for-social-media-sharing.JPG">
+                                <img src={"./photo-for-social-media-sharing.JPG"}/>
+                            </Route>
                         </Switch>
                     </div>
                 </div>
