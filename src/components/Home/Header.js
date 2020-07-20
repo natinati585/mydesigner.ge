@@ -9,31 +9,19 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import './header.css';
+import {Link} from "react-router-dom";
 
 const {SubMenu} = Menu;
 
 export default class App extends React.Component {
     state = {
-        current: 'main',
+        current: window.location.pathname.split('/')[1] || 'main',
     };
 
-    handleClick = e => {
-        if (e.key === 'main') {
-            this.props.homeState('currPage', <Main/>)
-        }
-        if (e.key === 'about') {
-            this.props.homeState('currPage', <About homeState={this.props.homeState}/>)
-        }
-        if (e.key === 'projects') {
-            this.props.homeState('currPage', <Projects/>)
-        }
-        if (e.key === 'contact') {
-            this.props.homeState('currPage', <Contact/>)
-        }
-
+    selectMenuItem = (e) => {
         this.setState({
-            current: e.key,
-        });
+            current: e.key
+        })
     };
 
     render() {
@@ -43,19 +31,22 @@ export default class App extends React.Component {
                     <div className={'header-main-logo-container'}>
                         <div className={'header-main-logo'}></div>
                     </div>
-                    <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal"
-                          className={'header-menu'}>
+                    <Menu
+                        onClick={this.selectMenuItem}
+                        selectedKeys={[this.state.current]} mode="horizontal"
+                        className={'header-menu'}>
+
                         <Menu.Item key="main" className={'sub-text'}>
-                            {T('Home')}
+                            <Link to="/">{T('Home')}</Link>
                         </Menu.Item>
                         <Menu.Item key="about" className={'sub-text'}>
-                            {T('Bio')}
+                            <Link to="/about">{T('Bio')}</Link>
                         </Menu.Item>
                         <Menu.Item key="projects" className={'sub-text'}>
-                            {T('Projects')}
+                            <Link to="/projects">{T('Projects')}</Link>
                         </Menu.Item>
                         <Menu.Item key="contact" className={'sub-text'}>
-                            {T('Contact')}
+                            <Link to="/contact">{T('Contact')}</Link>
                         </Menu.Item>
                         <Menu.Item className={'header-menu-item-language'} key="language">
                             <TranslateBox homeState={this.props.homeState}/>

@@ -37,13 +37,15 @@ input:-webkit-autofill:active {
     border: 1px solid black;
     border-radius: 5px;
     margin-top: -27vh;
-    margin-bottom: 10vh;
+    /*margin-bottom: 10vh;*/
+    margin-bottom: 3vh;
     margin-left: auto;
     margin-right: auto;
     width: 90vw;
     max-width: 700px;
     background-color: rgba(235, 235, 235, 0.85);
-    padding: 10px 15px 11vh 15px;
+    /*padding: 10px 15px 11vh 15px;*/
+    padding: 10px 15px 5vh 15px;
     position: relative;
 }
 
@@ -97,4 +99,35 @@ input:-webkit-autofill:active {
 .success-message
 {
     color: red;
+}
+
+.contact-info-container{
+    width: 100%;
+    padding-bottom: 15vh;
+}
+
+.contact-info{
+    padding: 10px 15px;
+    border-radius: 5px;
+    /*border: 1px solid black;*/
+    width: 90vw;
+    max-width: 700px;
+    background-color: rgba(246, 246, 246, 0.85);
+    margin: 0 auto;
+
+    /*display: flex;*/
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.contact-info table{
+    max-width: 50%;
+    font-weight: 600;
+    margin: 0 auto;
+    padding-left: 7vw;
+}
+
+.row-1{
+    padding-right: 5vw;
+    text-align: right;
 }

@@ -2,7 +2,8 @@
 
 .projects-header-text-container {
     color: white;
-    margin: 160px 10% 50px 10%;
+    /*margin: 160px 10% 50px 10%;*/
+    margin: 130px 10% 15px 10%;
     width: 80%;
     text-align: center;
     border-bottom: 1px solid #979797;
@@ -58,7 +59,7 @@
 }
 
 .projects-image-galleries-container {
-    padding: 0 10%;
+    padding: 0 10% 5% 10%;
     text-align: center;
 }
 
@@ -69,12 +70,23 @@
     display: inline-block;
     vertical-align: top;
     margin: 1.5%;
+
+    width: 100%;
+    padding-top: 100%;
+}
+
+.projects-image-gallery-with-text-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 1.5%;
 }
 
 .image-gallery-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .image-gallery,
@@ -122,30 +134,127 @@
 
 .image-gallery-fullscreen-button,
 .image-gallery-play-button {
-    bottom: 15px;
+    /*bottom: 15px;*/
+    /*top: -60%;*/
 }
 
 /*end of overwrighting*/
 
 /*  მობილურისთვის  */
 
-.projects-image-gallery {
+/*.projects-image-gallery {*/
+/*    width: 100%;*/
+/*    padding-top: 100%;*/
+/*}*/
+.projects-image-gallery-with-text-container {
     width: 100%;
-    padding-top: 100%;
+}
+
+.project-description-container {
+    font-weight: 700;
+}
+
+.project-description-container-in-box {
+    width: 100%;
+    height: fit-content;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    /*background-color: rgba(209, 209, 209, 0.7);*/
+    background-color: rgba(89, 89, 89, 0.7);
+    /*font-weight: 600;*/
+    /*border-top: 1px solid #545454;*/
+    padding: 5px;
+    color: #eaeaea;
+}
+
+.project-description-container-in-box > p {
+    margin-bottom: 3px;
+}
+
+.projects-image-gallery-with-text-container {
+
+}
+
+/*projects' csses after react-image-gallery update*/
+
+.image-gallery-slide > div {
+    height: 100%;
+    width: 100%;
+}
+
+.image-gallery-slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    cursor: pointer;
+    z-index: 1001 !important;
+}
+
+.image-gallery-fullscreen-button, .image-gallery-play-button {
+    top: 0 !important;
+    bottom: auto !important;
+    padding: 20px 14px !important;
+}
+
+.image-gallery-icon:focus{
+    outline: none !important;
+}
+
+
+
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+    height: 70px !important;
+}
+
+.image-gallery-left-nav, .image-gallery-right-nav {
+    padding: 50px 0 20px 0 !important;
+    top: 43% !important;
+}
+
+
+.image-gallery-fullscreen-button,
+.image-gallery-play-button,
+.image-gallery-left-nav,
+.image-gallery-right-nav{
+    color: #cccccc !important;
+    opacity: 0.7;
+}
+
+.image-gallery-fullscreen-button:hover,
+.image-gallery-play-button:hover,
+.image-gallery-left-nav:hover,
+.image-gallery-right-nav:hover {
+    color: whitesmoke !important;
+    opacity: 1;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+     max-height: 100vh !important;
+}
+
+.image-gallery.fullscreen-modal{
+    z-index: 1001 !important;
 }
 
 /*  ტაბლეტისთვის   */
 @media only screen and (min-width: 646px) {
-    .projects-image-gallery {
+    /*.projects-image-gallery {*/
+    /*    width: 47%;*/
+    /*    padding-top: 47%;*/
+    /*}*/
+    .projects-image-gallery-with-text-container {
         width: 47%;
-        padding-top: 47%;
     }
 }
 
 /*  დესკტოპისთვის:  */
 @media only screen and (min-width: 900px) {
-    .projects-image-gallery {
+    /*.projects-image-gallery {*/
+    /*    width: 30%;*/
+    /*    padding-top: 30%;*/
+    /*}*/
+    .projects-image-gallery-with-text-container {
         width: 30%;
-        padding-top: 30%;
     }
 }

@@ -42,7 +42,6 @@ class Main extends React.Component {
                 url: "https://mydesigner.ge/images/5db35b6a082883.68717077.jpg",
             },
         ];
-
         return (
             <div>
                 <ImagesAnimated imagesArray={images}/>

@@ -2,6 +2,16 @@ import React, {Component} from 'react';
 import qs from 'qs'
 import Header from "./Header";
 import Main from "./pages/Main";
+import Footer from "./Footer";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import Projects from "./pages/Projects";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const axios = require('axios').default;
 
@@ -13,7 +23,6 @@ class Home extends Component {
 
         this.state = {
             currLanguage: 'ge',
-            currPage: <Main/>
         }
     }
 
@@ -25,29 +34,35 @@ class Home extends Component {
         this._isMounted = false;
     }
 
-    homeStateChanger = (stateToChange, stateToChangeValue) => {
-        this.setState({
-            [stateToChange]: stateToChangeValue
-        })
-    };
-
-    getPHP = async () => {
-        let res = await axios.post('http://mydesigner.ge/php/login.php', qs.stringify({
-            'email': 'sofo',
-            'password': 'sofosofo1234'
-        }));
-
-        console.log(res)
-    };
-
     render() {
         return (
-            <div>
-                <Header homeState={this.homeStateChanger}/>
-                <div className={'main-page'}>
-                    {this.state.currPage}
+            <Router>
+                <div>
+                    <Header/>
+                    <div className={'main-page'}>
+                        <Switch>
+                            <Route exact path="/">
+                                <Main/>
+                            </Route>
+                            <Route path="/about">
+                                <About/>
+                            </Route>
+                            <Route
+                                exact
+                                path="/projects" component={(props) =>
+                                <Projects {...props} />}
+                            />
+                            <Route
+                                path="/projects/:projectId/:imageId" component={(props) => <Projects {...props} />}
+                            />
+                            <Route path="/contact">
+                                <Contact/>
+                            </Route>
+                        </Switch>
+                    </div>
                 </div>
-            </div>
+
+            </Router>
         )
     }
 }

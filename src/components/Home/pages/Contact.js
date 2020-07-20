@@ -67,7 +67,7 @@ class Contact extends React.Component {
                 </div>
                 <div className={'contact-inputs-container'}>
                     <h1 className={'header-text'}>
-                        {T('Contact')}
+                        {/*{T('Contact')}*/}
                     </h1>
                     <div>
                         <form className={'contact-form'} onSubmit={this.formCatcher}>
@@ -98,9 +98,35 @@ class Contact extends React.Component {
                                        value={T('ContactUsSubmitButton')}
                                        className={'contact-submit sub-text'}/>
                             </div>
-                            <label className={'success-waiting'} style={{opacity: this.state.successWaiting}}>{T('SuccessWaiting')}</label>
-                            <label className={'success-message'} style={{opacity: this.state.successMessage}}>{T('SuccessMessage')}</label>
+                            <label className={'success-waiting'}
+                                   style={{opacity: this.state.successWaiting}}>{T('SuccessWaiting')}</label>
+                            <label className={'success-message'}
+                                   style={{opacity: this.state.successMessage}}>{T('SuccessMessage')}</label>
                         </form>
+                    </div>
+                </div>
+                <div className={'contact-info-container'}>
+                    <div className={'contact-info'}>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td className={'row-1'}>
+                                    {T('SophieEmailLabel')}
+                                </td>
+                                <td>
+                                    {T('SophieEmail')}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className={'row-1'}>
+                                    {T('SophieNumberLabel')}
+                                </td>
+                                <td>
+                                    {T('SophieNumber')}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <Footer/>

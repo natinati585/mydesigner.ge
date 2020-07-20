@@ -18,7 +18,6 @@ class App extends React.Component {
     }
 
     forUpdateLanguage = () => {
-        console.log(this.props);
         this.props.onUpdateLanguage(this.state.language);
     };
 

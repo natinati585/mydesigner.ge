@@ -37,7 +37,7 @@ class About extends React.Component {
                         <div className={'about-us-text-container'}>
                             <div className={'about-us-text'}>
                                 <h1 className={'header-text'}>
-                                    {T('Bio')}
+                                    {/*{T('Bio')}*/}
                                 </h1>
                                 <div>
                                     <h6 className={'simple-text'}>
