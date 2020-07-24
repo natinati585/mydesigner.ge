@@ -92,9 +92,6 @@ class Projects extends React.Component {
 
         return (
             <div>
-                <div className={'projects-header-text-container'}>
-                    {/*<h1 className="header-text projects-header-text">{T('Projects')}</h1>*/}
-                </div>
                 <div className={'projects-image-galleries-container'}>
                     {
                         this.state.selectedData.map((project, index) => {
@@ -178,12 +175,12 @@ class Projects extends React.Component {
                                                                 this.props.history.push(`/projects/${project[0]}/${nextIndex}`);
                                                             }
                                                         }}>
-                                                        <svg className="image-gallery-svg"
-                                                             xmlns="http://www.w3.org/2000/svg" viewBox="6 0 12 24"
-                                                             fill="none" stroke="currentColor" strokeWidth="1"
-                                                             strokeLinecap="round" strokeLinejoin="round">
-                                                            <polyline points="15 18 9 12 15 6"></polyline>
-                                                        </svg>
+                                                        {/*<svg className="image-gallery-svg"*/}
+                                                        {/*     xmlns="http://www.w3.org/2000/svg" viewBox="6 0 12 24"*/}
+                                                        {/*     fill="none" stroke="currentColor" strokeWidth="1"*/}
+                                                        {/*     strokeLinecap="round" strokeLinejoin="round">*/}
+                                                        {/*    <polyline points="15 18 9 12 15 6"></polyline>*/}
+                                                        {/*</svg>*/}
                                                     </button>
                                                 )
                                             } : undefined}
@@ -205,12 +202,12 @@ class Projects extends React.Component {
                                                                 this.props.history.push(`/projects/${project[0]}/${nextIndex}`);
                                                             }
                                                         }}>
-                                                        <svg className="image-gallery-svg"
-                                                             xmlns="http://www.w3.org/2000/svg" viewBox="6 0 12 24"
-                                                             fill="none" stroke="currentColor" strokeWidth="1"
-                                                             strokeLinecap="round" strokeLinejoin="round">
-                                                            <polyline points="9 18 15 12 9 6"></polyline>
-                                                        </svg>
+                                                        {/*<svg className="image-gallery-svg"*/}
+                                                        {/*     xmlns="http://www.w3.org/2000/svg" viewBox="6 0 12 24"*/}
+                                                        {/*     fill="none" stroke="currentColor" strokeWidth="1"*/}
+                                                        {/*     strokeLinecap="round" strokeLinejoin="round">*/}
+                                                        {/*    <polyline points="9 18 15 12 9 6"></polyline>*/}
+                                                        {/*</svg>*/}
                                                     </button>
                                                 )
                                             } : undefined}

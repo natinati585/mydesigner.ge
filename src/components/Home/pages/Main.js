@@ -43,8 +43,13 @@ class Main extends React.Component {
             },
         ];
         return (
-            <div>
-                <ImagesAnimated imagesArray={images}/>
+            <div className={'main'}>
+                {/*<ImagesAnimated imagesArray={images}/>*/}
+
+                <div className={'main-background-image'}>
+
+                </div>
+
                 <div className={'main-footer-container'}>
                     <Footer/>
                 </div>

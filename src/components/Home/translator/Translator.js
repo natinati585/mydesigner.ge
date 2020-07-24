@@ -26,7 +26,7 @@ class Translator {
             ,SophieBostoghanashvili: 'სოფო ბოსტოღანაშვილი'
             ,ViewWorks: 'პორტფოლიო'
             ,Home: 'მთავარი'
-            ,Projects: 'ნამუშევრები'
+            ,Projects: 'პროექტები'
             ,Bio: 'ჩემ შესახებ'
             ,Bio1: 'კარგი დიზაინერი წერს თქვენი ცხოვრების სცენარს: გიგეგმავთ გადაადგილების ტრაექტორიას ოთახებში, ' +
                 'ფიქრობს, პირველად რა დაინახოთ დილით გაღვიძებისას, ან რა გარემო შეგიქმნათ საღამოს თქვენს საყვარელ' +
@@ -59,7 +59,7 @@ class Translator {
             ,SophieBostoghanashvili: 'Sophie Bostoghanashvili'
             ,ViewWorks: 'Portfolio'
             ,Home: 'Home'
-            ,Projects: 'Works'
+            ,Projects: 'Projects'
             ,Bio: 'About me'
             ,Bio1: 'A good designer writes your life story: planning the trajectory of your movement in the rooms, ' +
                 'thinking about what you see for the first time in the morning, ' +

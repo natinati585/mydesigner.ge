@@ -12,6 +12,7 @@ import {
 import Projects from "./pages/Projects";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import './home.css';
 
 const axios = require('axios').default;
 
@@ -39,7 +40,7 @@ class Home extends Component {
             <Router>
                 <div>
                     <Header/>
-                    <div className={'main-page'}>
+                    <div className={'home'}>
                         <Switch>
                             <Route exact path="/">
                                 <Main/>

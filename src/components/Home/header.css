@@ -12,8 +12,8 @@
 }
 
 .header-menu {
-    margin-left: 27% !important;
-    width: 67% !important;
+    margin-left: 20.8% !important;
+    width: 75% !important;
 }
 
 .header-menu > * {
@@ -45,11 +45,14 @@ header * {
 }
 
 .header-main-logo {
-    background-image: url("https://mydesigner.ge/frontendMedia/mydesignerLogoBoth2.png");
-    width: 70px;
-    height: 70px;
+    background-image: url("https://mydesigner.ge/frontendMedia/lofticLogoSmall.png");
+    /*width: 70px;*/
+    width: 75px;
+    height: 40px;
     background-size: contain;
-    margin: 10px auto;
+    background-repeat: no-repeat;
+    /*margin: 10px auto;*/
+    margin: 8px auto;
     /*position: absolute;*/
 }
 
@@ -63,6 +66,7 @@ header * {
     display: inline-block;
     width: 80vw;
     vertical-align: middle;
+    text-align: center;
 }
 
 .ant-menu-header > :nth-child(2) {
@@ -135,6 +139,7 @@ html {
     display: inline-block;
     vertical-align: middle !important;
     border: none !important;
+    text-align: center;
 }
 
 .ant-menu-item-active {
@@ -172,6 +177,10 @@ html {
     margin: 0 !important;
 }
 
+.ant-menu-submenu > .ant-menu {
+    padding: 5px 0;
+}
+
 .ant-menu-submenu-selected, .ant-menu-submenu-active, .ant-menu-submenu, .ant-menu-submenu-horizontal, .ant-menu-overflowed-submenu {
     border-bottom: transparent !important;
     color: white !important;
@@ -182,17 +191,20 @@ html {
 
 /*somehow needed to add these styles to ant-menu items, after update*/
 
-.ant-menu-horizontal > .ant-menu-item > a {
+/*.ant-menu-horizontal > */
+.ant-menu-item > a {
     display: block;
     color: whitesmoke !important;
 }
 
-.ant-menu-horizontal > .ant-menu-item > a:hover {
+/*.ant-menu-horizontal > */
+.ant-menu-item > a:hover {
     display: block;
     color: rgba(0, 0, 0, 0.65) !important;
 }
 
-.ant-menu-horizontal > .ant-menu-item-selected > a {
+/*.ant-menu-horizontal > */
+.ant-menu-item-selected > a {
     display: block;
     color: rgba(0, 0, 0, 0.65) !important;
 }
