@@ -91,7 +91,7 @@ class AdminPage extends Component {
             formData.append('image', image, image.name);
         }
 
-        return await axios.post('https://mydesigner.ge/php/cmsData.php', formData);
+        return await axios.post('https://loftic.ge/php/cmsData.php', formData);
 
     }
 
@@ -184,7 +184,7 @@ class AdminPage extends Component {
     };
 
     logout = async () => {
-        await axios.post('https://mydesigner.ge/php/logout.php');
+        await axios.post('https://loftic.ge/php/logout.php');
         window.location.href = '/admin';
     };
 

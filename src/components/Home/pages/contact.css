@@ -21,16 +21,17 @@ input:-webkit-autofill:active {
 }
 
 .contact {
-    background-color: white;
+    background-color: #202121;
 }
 
 .contact-image {
-    background-image: url(https://mydesigner.ge/images/5db354f85f2352.65801916.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*background-image: url(https://loftic.ge/images/5db354f85f2352.65801916.jpg);*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
     background-position: center;
     width: 100%;
-    height: 60vh;
+    /*height: 60vh;*/
+    height: 50vh;
 }
 
 .contact-inputs-container {

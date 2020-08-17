@@ -48,7 +48,7 @@ class Translator {
             ,SuccessMessage: 'შეკვეთა წარმატებით გაიგზავნა! '
 
             ,SophieEmailLabel: 'ელ.ფოსტა: '
-            ,SophieEmail: 'Sophie@mydesigner.ge'
+            ,SophieEmail: 'Sophie@loftic.ge'
             ,SophieNumberLabel: 'ნომერი: '
             ,SophieNumber: '+995 591 22 95 59'
 
@@ -81,7 +81,7 @@ class Translator {
             ,SuccessMessage: 'Information has been sent successfully! '
 
             ,SophieEmailLabel: 'Email: '
-            ,SophieEmail: 'Sophie@mydesigner.ge'
+            ,SophieEmail: 'Sophie@loftic.ge'
             ,SophieNumberLabel: 'Number: '
             ,SophieNumber: '+995 591 22 95 59'
 

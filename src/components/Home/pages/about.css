@@ -2,11 +2,11 @@
 
 .about-us-content {
     padding-bottom: 5vh;
-    background-color: white;
+    background-color: #202121;
 }
 
 .about-us-image {
-    background-image: url("https://mydesigner.ge/images/5db356b62e65b8.93045071.jpg");
+    background-image: url("https://loftic.ge/frontendMedia/about-us-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

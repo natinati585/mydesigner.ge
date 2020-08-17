@@ -3,3 +3,28 @@
     min-height: 100vh;
     position: relative;
 }
+
+.home-temp-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://loftic.ge/frontendMedia/about-us-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-temp-background-color {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(25, 25, 25, 0.7);
+    padding-top: 30vh;
+}
+
+.main-big-logo {
+    background-image: url("https://loftic.ge/frontendMedia/big-logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40vw;
+    width: 40vw;
+    max-width: 200px;
+    margin: 0 auto;
+}

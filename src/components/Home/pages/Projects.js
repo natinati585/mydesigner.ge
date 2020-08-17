@@ -39,7 +39,7 @@ class Projects extends React.Component {
         let formData = new FormData();
         formData.append('selectForFrontend', {formData: 'formData'});
 
-        let selectedData = await axios.post('https://mydesigner.ge/php/selectForFrontend.php', formData);
+        let selectedData = await axios.post('https://loftic.ge/php/selectForFrontend.php', formData);
 
         let objectOfProjects = {};
         let data = [];

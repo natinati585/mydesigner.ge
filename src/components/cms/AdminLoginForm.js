@@ -19,7 +19,7 @@ class NormalLoginForm extends React.Component {
     }
 
     getLoginInfo = async (data) => {
-        let res = await axios.post('https://mydesigner.ge/php/login.php', qs.stringify({
+        let res = await axios.post('https://loftic.ge/php/login.php', qs.stringify({
             'email': data['username'],
             'password': data['password']
         }));

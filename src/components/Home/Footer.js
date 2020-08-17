@@ -11,7 +11,7 @@ export default class Footer extends React.Component {
                     <div className={'footer-icons'}>
                         <div className={'footer-icon'}
                              onClick={() => {
-                                 window.open("https://www.facebook.com/mydesigner.ge/?modal=admin_todo_tour")
+                                 window.open("https://www.facebook.com/loftic.ge/?modal=admin_todo_tour")
                              }}>
                         </div>
                         <div className={'footer-icon'}
@@ -28,7 +28,7 @@ export default class Footer extends React.Component {
                         {/*<Icon type="facebook" style={{fontSize: '27px'}}/>*/}
                     </div>
                     <div className={'footer-copyright'}>
-                        ©2019 - Mydesigner.ge
+                        ©2019 - loftic.ge
                     </div>
                     <div className={'top-ge-container'}>
                         <div id="top-ge-counter-container" data-site-id="113330"></div>

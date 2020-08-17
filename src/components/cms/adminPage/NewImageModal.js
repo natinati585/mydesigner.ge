@@ -169,7 +169,7 @@ class NewImageModal extends React.Component {
 
             let name = 'image';
             let description = 'description';
-            let url = 'https://mydesigner.ge/images/callNati.jpeg';
+            let url = 'https://loftic.ge/images/callNati.jpeg';
             let projectId = this.state.fetchedProject;
 
             if(projectId && this.state.fetchedImage){

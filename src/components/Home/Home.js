@@ -24,6 +24,7 @@ class Home extends Component {
 
         this.state = {
             currLanguage: 'ge',
+            mainPage: false
         }
     }
 
@@ -36,38 +37,50 @@ class Home extends Component {
     }
 
     render() {
-        return (
-            <Router>
-                <div>
-                    <Header/>
-                    <div className={'home'}>
-                        <Switch>
-                            <Route exact path="/">
-                                <Main/>
-                            </Route>
-                            <Route path="/about">
-                                <About/>
-                            </Route>
-                            <Route
-                                exact
-                                path="/projects" component={(props) =>
-                                <Projects {...props} />}
-                            />
-                            <Route
-                                path="/projects/:projectId/:imageId" component={(props) => <Projects {...props} />}
-                            />
-                            <Route path="/contact">
-                                <Contact/>
-                            </Route>
-                            <Route path="/photo-for-social-media-sharing.JPG">
-                                <img src={"./photo-for-social-media-sharing.JPG"}/>
-                            </Route>
-                        </Switch>
+        return this.state.mainPage ? (
+                <Router>
+                    <div>
+                        <Header/>
+                        <div className={'home'}>
+                            <Switch>
+                                <Route exact path="/">
+                                    <Main/>
+                                </Route>
+                                <Route path="/about">
+                                    <About/>
+                                </Route>
+                                <Route
+                                    exact
+                                    path="/projects" component={(props) =>
+                                    <Projects {...props} />}
+                                />
+                                <Route
+                                    path="/projects/:projectId/:imageId" component={(props) => <Projects {...props} />}
+                                />
+                                <Route path="/contact">
+                                    <Contact/>
+                                </Route>
+                                <Route path="/photo-for-social-media-sharing.JPG">
+                                    <img src={"./photo-for-social-media-sharing.JPG"}/>
+                                </Route>
+                            </Switch>
+                        </div>
+                    </div>
+
+                </Router>
+            )
+            :
+            (
+                <div className={'home-temp-page'} onClick={() => {
+                    this.setState({mainPage: true})
+                }}>
+                    <div className={'home-temp-background-color'}>
+                        <div className={'main-big-logo'}>
+
+                        </div>
                     </div>
                 </div>
-
-            </Router>
-        )
+            )
     }
 }
 

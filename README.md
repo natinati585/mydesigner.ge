@@ -8,4 +8,4 @@ Used:     - Redux
           - ant design
           - react-image-gallery
 
-Demo: https://mydesigner.ge/ 
+Demo: https://loftic.ge/ 
