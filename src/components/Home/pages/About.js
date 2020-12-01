@@ -40,21 +40,21 @@ class About extends React.Component {
                                     {/*{T('Bio')}*/}
                                 </h1>
                                 <div>
-                                    <h6 className={'simple-text'}>
+                                    <h6 className={'simple-text text-color'}>
                                         &emsp;
                                         {
                                             T('Bio1')
                                         }</h6>
                                 </div>
                                 <div>
-                                    <h6 className={'simple-text'}>
+                                    <h6 className={'simple-text text-color'}>
                                         &emsp;
                                         {
                                             T('Bio2')
                                         }</h6>
                                 </div>
                                 <div>
-                                    <h6 className={'simple-text'}>
+                                    <h6 className={'simple-text text-color'}>
                                         &emsp;
                                         {
                                             T('Bio3')

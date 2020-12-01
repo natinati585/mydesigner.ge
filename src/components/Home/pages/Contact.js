@@ -66,37 +66,37 @@ class Contact extends React.Component {
                 <div className={'contact-image'}>
                 </div>
                 <div className={'contact-inputs-container'}>
-                    <h1 className={'header-text'}>
+                    <h1 className={'header-text text-color'}>
                         {/*{T('Contact')}*/}
                     </h1>
                     <div>
-                        <form className={'contact-form'} onSubmit={this.formCatcher}>
+                        <form className={'contact-form text-color'} onSubmit={this.formCatcher}>
                             <input type={'text'}
                                    placeholder={T('ContactUsNameInput')}
                                    name={"name"}
-                                   className={'contact-input'}
+                                   className={'contact-input text-color'}
                                    required/>
                             <input type={'email'}
                                    placeholder={T('ContactUsEmailInput')}
                                    name={"email"}
-                                   className={'contact-input'}
+                                   className={'contact-input text-color'}
                                    required/>
                             <PhoneInput
                                 placeholder={T('ContactUsNumberInput')}
                                 name={"number"}
                                 value={this.state.phoneValue}
                                 onChange={phoneValue => this.setState({phoneValue: phoneValue})}
-                                className={'contact-number-input'}
+                                className={'contact-number-input text-color'}
                             />
                             <textarea rows={"2"}
                                       placeholder={T('ContactUsTextInput')}
                                       name={"text"}
-                                      className={'contact-input'}
+                                      className={'contact-input text-color'}
                                       required/>
                             <div className={'contact-submit-container'}>
                                 <input type={'submit'}
                                        value={T('ContactUsSubmitButton')}
-                                       className={'contact-submit sub-text'}/>
+                                       className={'contact-submit sub-text text-color'}/>
                             </div>
                             <label className={'success-waiting'}
                                    style={{opacity: this.state.successWaiting}}>{T('SuccessWaiting')}</label>
@@ -106,7 +106,7 @@ class Contact extends React.Component {
                     </div>
                 </div>
                 <div className={'contact-info-container'}>
-                    <div className={'contact-info'}>
+                    <div className={'contact-info text-color'}>
                         <table>
                             <tbody>
                             <tr>

@@ -24,7 +24,7 @@ class Home extends Component {
 
         this.state = {
             currLanguage: 'ge',
-            mainPage: false
+            mainPage: true
         }
     }
 

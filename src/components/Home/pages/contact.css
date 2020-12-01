@@ -36,23 +36,24 @@ input:-webkit-autofill:active {
 
 .contact-inputs-container {
     /*min-height: 400px;*/
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
     margin-top: -27vh;
     /*margin-bottom: 10vh;*/
-    margin-bottom: 3vh;
+    /* margin-bottom: 3vh; */
     margin-left: auto;
     margin-right: auto;
     width: 90vw;
     max-width: 700px;
-    background-color: rgba(235, 235, 235, 0.85);
+    /* background-color: rgba(235, 235, 235, 0.85); */
+    /* background-color: rgba(0, 0, 0, 0.7); */
     /*padding: 10px 15px 11vh 15px;*/
     padding: 10px 15px 5vh 15px;
     position: relative;
 }
 
 .contact-form{
-    padding: 10vh 5% 5% 5%;
+    /* padding: 10vh 5% 5% 5%; */
 }
 
 .contact-input::before{
@@ -71,11 +72,17 @@ input:-webkit-autofill:active {
     margin-bottom: 20px;
     width: Calc( 100% - 35px );
     background: none;
-    border-bottom: 1px solid gray;
+    /* border-bottom: 1px solid rgb(235, 235, 235) !important; */
+    border-bottom: 1px solid #737373 !important;
 }
 
 .contact-number-input{
     margin-bottom: 20px;
+}
+.contact-number-input :nth-child(1) > :nth-child(2),
+.contact-number-input :nth-child(1) > :nth-child(2)::placeholder{
+    /* border-bottom: 1px solid rgb(235, 235, 235) !important; */
+    color: rgba(235, 235, 235, 0.85);
 }
 .contact-submit-container{
     text-align: right;
@@ -85,13 +92,14 @@ input:-webkit-autofill:active {
     max-width: 250px;
     padding: 8px 5px 5px 5px;
     border-radius: 4px;
-    border: 1px solid gray;
+    border: 1px solid rgb(235, 235, 235);
     cursor: pointer;
     margin-top: 30px;
 }
 
 .contact-submit:hover {
-    background-color: rgba(255, 255, 255, 0.5) !important;
+    /* background-color: rgba(255, 255, 255, 0.5) !important; */
+    background-color: rgba(0, 0, 0, 0.5) !important;
 }
 .contact-submit:focus{
     outline: none;
@@ -114,7 +122,7 @@ input:-webkit-autofill:active {
     /*border: 1px solid black;*/
     width: 90vw;
     max-width: 700px;
-    background-color: rgba(246, 246, 246, 0.85);
+    /* background-color: rgba(0, 0, 0, 0.7); */
     margin: 0 auto;
 
     /*display: flex;*/

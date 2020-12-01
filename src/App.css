@@ -46,6 +46,11 @@ body {
     font-weight: 700;
 }
 
+.text-color,
+.text-color::placeholder {
+    color: rgb(235, 235, 235) !important;
+}
+
 .sub-text {
     /*font-family: "BPG LE Studio 02 Caps", sans-serif;*/
     font-family: "BPG Nino Elite Caps", sans-serif;
