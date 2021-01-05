@@ -5,7 +5,7 @@
   "dependencies": {
     "alk-rex-bold": "^1.0.0",
     "antd": "^3.24.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bpg-extrasquare-mtavruli": "^1.0.0",
     "bpg-nino-elite-caps": "^1.0.0",
     "material-ui": "^0.20.2",
